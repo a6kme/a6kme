@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  withStyles, Card, CardContent, Typography, Button
+  withStyles, Typography, Button
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import withLayout from '../src/lib/with-layout';
