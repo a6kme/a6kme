@@ -12,7 +12,7 @@ export default (Component, title = 'Title') => props => (
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      fontFamily: '"Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"'
+      fontFamily: '"Ubuntu", sans-serif'
     }}
     >
       <Header />

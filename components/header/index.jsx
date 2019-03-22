@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   withStyles, AppBar
 } from '@material-ui/core';
@@ -16,21 +17,22 @@ const styles = {
     width: '100%',
     maxWidth: '1200px',
     margin: 'auto',
+    '& a': {
+      textDecoration: 'none',
+      textTransform: 'uppercase',
+      color: '#666',
+      '&:hover': {
+        color: FONT_SELECTED_COLOR,
+        transition: 'color 0.3s'
+      }
+    },
     '&>ul': {
-      display: 'flex',
-      flexDirection: 'row',
       listStyle: 'none',
       margin: 0,
-      color: 'grey',
+      paddingLeft: '1.5em',
       '&>li': {
-        fontFamily: '"Ubuntu", sans-serif',
         padding: '1em 10px',
-        cursor: 'pointer',
-        textTransform: 'uppercase',
-        '&:hover': {
-          color: FONT_SELECTED_COLOR,
-          transition: 'color 0.3s'
-        }
+        float: 'left'
       }
     }
   },
@@ -42,17 +44,28 @@ const styles = {
 const Header = (props) => {
   const { classes } = props;
   const homeSelected = true;
+  const articlesSelected = false;
   return (
     <div className={classes.header_root}>
       <AppBar position="static" className={classes.header_nav}>
         <div className={classes.header_toolbar}>
           <ul>
             <li className={homeSelected ? classes.header_nav_selected : ''}>
-              Home
+              <Link href="/">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a>
+                  Home
+                </a>
+              </Link>
             </li>
-            {/* <li className={blogsSelected ? classes.header_nav_selected : ''}>
-              Articles
-            </li> */}
+            <li className={articlesSelected ? classes.header_nav_selected : ''}>
+              <Link href="/articles">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a>
+                  Articles
+                </a>
+              </Link>
+            </li>
           </ul>
         </div>
       </AppBar>
