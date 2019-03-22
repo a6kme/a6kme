@@ -11,5 +11,5 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run export
-      - run: s3 sync ./out s3://a6kme-site-artifacts/
-      - run: cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+      - run: aws s3 sync ./out s3://a6kme-site-artifacts/
+      - run: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
