@@ -6,12 +6,8 @@ jobs:
     branches:
       only:
         - master
-    environment:
-      - AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-      - AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
-      - CLOUDFRONT_DISTRIBUTION_ID: $CLOUDFRONT_DISTRIBUTION_ID
     steps:
+      - checkout
       - run: npm install
       - run: npm run build
       - run: npm run export
