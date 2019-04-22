@@ -7,6 +7,11 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
+  palette: {
+    background: {
+      default: '#fff'
+    }
+  }
 });
 function createPageContext() {
   return {

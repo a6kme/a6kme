@@ -4,15 +4,17 @@ import Header from '../../components/header';
 
 /* eslint-disable react/display-name */
 // Library code, hence not giving display name
-export default (Component, title = 'Title') => props => (
+export default (Component, title) => props => (
   <div>
-    <Head>
-      <title>{title}</title>
-    </Head>
+    {title ? (
+      <Head>
+        <title>{title}</title>
+      </Head>
+    ) : null }
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      fontFamily: '"Ubuntu", sans-serif'
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'
     }}
     >
       <Header />

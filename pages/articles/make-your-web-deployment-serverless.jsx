@@ -1,18 +1,12 @@
 import React from 'react';
-import {
-  withStyles
-} from '@material-ui/core';
-import PropTypes from 'prop-types';
-import withLayout from '../../src/lib/with-layout';
+import Article from '../../components/articles';
+import { html, attributes } from '../../content/make-your-web-deployment-serverless.md';
 
-const styles = ({
-
-});
-
-const ServerlessWebDeployment = props => (
-  <div>
-        Yo. This is an article about serverless
-  </div>
+const ServerLessDeployment = () => (
+  <Article
+    html={html}
+    attributes={attributes}
+  />
 );
 
-export default withLayout(withStyles(styles)(ServerlessWebDeployment), 'A6kme-Serverless web deployment');
+export default ServerLessDeployment;
