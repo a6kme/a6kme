@@ -44,8 +44,8 @@ const styles = {
 
 const Header = (props) => {
   const { classes, router: { pathname } } = props;
-  const articlesSelected = pathname === '/' || pathname.startsWith('/articles');
-  const aboutSelected = pathname === '/about';
+  const articlesSelected = pathname.startsWith('/articles');
+  const aboutSelected = pathname === '/';
   return (
     <div className={classes.header_root}>
       <AppBar position="static" className={classes.header_nav}>
@@ -54,16 +54,16 @@ const Header = (props) => {
             <li>
               <Link href="/">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={articlesSelected ? classes.header_nav_selected : ''}>
-                  Articles
+                <a className={aboutSelected ? classes.header_nav_selected : ''}>
+                  About
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/about">
+              <Link href="/articles">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={aboutSelected ? classes.header_nav_selected : ''}>
-                  About
+                <a className={articlesSelected ? classes.header_nav_selected : ''}>
+                  Articles
                 </a>
               </Link>
             </li>

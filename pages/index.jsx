@@ -1,101 +1,113 @@
 import React from 'react';
-import Link from 'next/link';
 import {
-  withStyles
+  withStyles, Typography, Button
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import withLayout from '../src/lib/with-layout';
-import { MAX_CONTENT_WIDTH } from '../components/constants';
+import { BACKGROUND_COLOR, MAX_CONTENT_WIDTH } from '../components/constants';
+import ExternalLinksAndImages from '../components/homepage/links';
 
 const styles = theme => ({
-  articles_container: {
+  homepage_container: {
     maxWidth: MAX_CONTENT_WIDTH,
-    margin: '6em auto',
+    width: '100%',
+    margin: '2em auto 6em auto',
     [theme.breakpoints.down('sm')]: {
-      margin: '3em auto'
+      padding: '0 1em 0 1em'
     },
-    padding: '0 2em',
-    listStyle: 'none',
-    '&>p': {
-      ...theme.typography.subtitle1,
-      textAlign: 'center'
+    '& mark': {
+      backgroundColor: '#fcf8e3',
+      padding: '1px 5px'
     },
-  },
-  articles: {
-    borderTop: '1px solid #f0edea',
-    padding: '1em 0',
-    '& p, span': {
-      ...theme.typography.body1,
-      color: '#666'
+    '& button': {
+      textTransform: 'none',
+      backgroundColor: BACKGROUND_COLOR,
+      margin: '1em auto',
+      display: 'block'
     },
-    '& h5': {
-      ...theme.typography.h5,
-      margin: '1em 0'
-    },
-    '& span': {
-      fontSize: '0.9em'
+    '& hr': {
+      margin: '1.5em auto',
+      border: 0,
+      borderTop: '1px solid #eee',
+      maxWidth: '80%'
     },
     '& a': {
       textDecoration: 'none',
-      color: 'inherit'
-    },
-    '& code': {
-      backgroundColor: '#eff0f1'
+      '&:hover': {
+        textDecoration: 'underline',
+      }
     }
   },
+  profile_pic: {
+    boxShadow: '0 0 10px 2px rgba(173, 173, 173, 0.5)',
+    width: '40%',
+    display: 'block',
+    margin: '1em auto 1em auto',
+    maxWidth: '300px',
+    borderRadius: '5px',
+    [theme.breakpoints.down('sm')]: {
+      width: '60%'
+    }
+  },
+  links_container: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    '& img': {
+      width: '2.5em',
+      height: '2.5em',
+      margin: '0.5em'
+    }
+  }
 });
 
-const Articles = (props) => {
+const Index = (props) => {
   const { classes } = props;
   return (
-    <ul className={classes.articles_container}>
-      <p>Recent Articles</p>
-      <li className={classes.articles}>
-        <Link href="/articles/make-your-web-deployment-serverless">
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a>
-            <span>March 5, 2019</span>
-            <h5>Make your web deployments serverless</h5>
-            <p>
-              I always avoided having to learn CSS formally, and was always facing problems
-              trying to understand the style from spaghetti CSS declarations from chrome
-              dev tools ...
-            </p>
-          </a>
-        </Link>
-      </li>
-      <li className={classes.articles}>
-        <Link href="/articles/the-missing-guide-to-create-an-npm-library">
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a>
-            <span>March 5, 2019</span>
-            <h5>The missing guide to create an NPM Library</h5>
-            <p>
-              This is my attempt to organize the methods and resources necessary to be able to
-              publish an NPM library ...
-            </p>
-          </a>
-        </Link>
-      </li>
-      <li className={classes.articles}>
-        <Link href="/articles/why-i-decided-to-host-my-own-blog">
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a>
-            <span>March 5, 2019</span>
-            <h5>Why I decided to host my own blog</h5>
-            <p>
-            I would like to explain the rationale behind why I decided to host my own blog using
-            `markdown` files ...
-            </p>
-          </a>
-        </Link>
-      </li>
-    </ul>
+    <div className={classes.homepage_container}>
+      <Typography gutterBottom align="center" variant="h2">
+        Hello
+      </Typography>
+      <Typography gutterBottom align="center" variant="h5">
+        I am
+        {' '}
+        <mark>Abhishek (A6k)</mark>
+      </Typography>
+      <Typography gutterBottom align="center" variant="subtitle1">
+        Welcome to my e-home in Cybernet. I can be recognized with below photo.
+      </Typography>
+      <img alt="a6kme" src="/static/home/a6kme.jpg" className={classes.profile_pic} />
+      <Typography gutterBottom align="center" variant="subtitle1">
+        Mostly I can be found in front of my computer. I love travelling,
+        babbling, and I am my experiences of them. I write sometimes, using
+        {' '}
+        <Link href="/articles">Articles Section</Link>
+        .
+      </Typography>
+      {/* eslint-disable-next-line no-undef */}
+      <Button variant="contained" onClick={() => { window.location.href = 'mailto:a@a6k.me?subject=Hi from a6k.me!'; }}>
+        Say Hi
+      </Button>
+      <Typography gutterBottom align="center" variant="subtitle1">
+        P.S: If you don&apos;t have an email client installed on your device,
+        you can email me at
+        {' '}
+        <mark>a@a6k.me</mark>
+      </Typography>
+      <hr />
+      <Typography gutterBottom align="center" variant="subtitle1">
+        My other hangouts in the network
+      </Typography>
+      <div className={classes.links_container}>
+        <ExternalLinksAndImages />
+      </div>
+    </div>
   );
 };
 
-Articles.propTypes = {
+Index.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withLayout(withStyles(styles)(Articles), 'A6kme-Articles');
+export default withLayout(withStyles(styles)(Index), 'A6kme-Home');
