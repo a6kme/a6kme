@@ -9,15 +9,15 @@ import ExternalLinksAndImages from '../components/homepage/links';
 
 const styles = theme => ({
   homepage_container: {
+    '& *': {
+      fontFamily: '"Ubuntu", sans-serif',
+    },
     maxWidth: '1200px',
     width: '100%',
     margin: 'auto',
     paddingTop: '100px',
     [theme.breakpoints.down('sm')]: {
       paddingTop: '60px'
-    },
-    '& *': {
-      fontFamily: '"Ubuntu", sans-serif',
     },
     '& mark': {
       backgroundColor: '#fcf8e3'
@@ -86,4 +86,4 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withLayout(withStyles(styles)(Index), 'A6K Home');
+export default withLayout(withStyles(styles)(Index), 'A6kme-Home');
