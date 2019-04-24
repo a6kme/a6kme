@@ -3,7 +3,6 @@ import Link from 'next/link';
 import {
   withStyles, AppBar
 } from '@material-ui/core';
-import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FONT_SELECTED_COLOR, BACKGROUND_COLOR } from '../constants';
 
@@ -79,4 +78,4 @@ Header.propTypes = {
   router: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(withRouter(Header));
+export default withStyles(styles)(Header);

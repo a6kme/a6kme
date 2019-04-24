@@ -40,8 +40,10 @@ const styles = theme => ({
       color: 'inherit'
     },
     '& code': {
-      backgroundColor: '#eff0f1'
-    }
+      fontFamily: '"Inconsolata", monospace',
+      backgroundColor: 'rgba(27,31,35,.05)',
+      padding: '1px 5px'
+    },
   },
 });
 
@@ -51,28 +53,27 @@ const Articles = (props) => {
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
       <li className={classes.articles}>
-        <Link href="/articles/make-your-web-deployment-serverless">
+        <Link href="/articles/how-to-create-and-publish-an-npm-package-part-2">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
             <span>March 5, 2019</span>
-            <h5>Make your web deployments serverless</h5>
+            <h5>How to create and publish an NPM package - Part 2</h5>
             <p>
-              I always avoided having to learn CSS formally, and was always facing problems
-              trying to understand the style from spaghetti CSS declarations from chrome
-              dev tools ...
+              This one builds on top of Part 1 of article by same name. This one talks about
+              optimizing the build size of package.
             </p>
           </a>
         </Link>
       </li>
       <li className={classes.articles}>
-        <Link href="/articles/the-missing-guide-to-create-an-npm-library">
+        <Link href="/articles/how-to-create-and-publish-an-npm-package-part-1">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
             <span>March 5, 2019</span>
-            <h5>The missing guide to create an NPM Library</h5>
+            <h5>How to create and publish an NPM package - Part 1</h5>
             <p>
               This is my attempt to organize the methods and resources necessary to be able to
-              publish an NPM library ...
+              create and publish an NPM library.
             </p>
           </a>
         </Link>
@@ -84,8 +85,11 @@ const Articles = (props) => {
             <span>March 5, 2019</span>
             <h5>Why I decided to host my own blog</h5>
             <p>
-            I would like to explain the rationale behind why I decided to host my own blog using
-            `markdown` files ...
+              I would like to explain the rationale behind why I decided to host my own blog using
+              {' '}
+              <code>markdown</code>
+              {' '}
+              files instead of going for a hosted provider like Medium or WordPress.
             </p>
           </a>
         </Link>

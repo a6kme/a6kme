@@ -79,7 +79,7 @@ const Index = (props) => {
       </Typography>
       <img alt="a6kme" src="/static/home/a6kme.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
-        Mostly I can be found in front of my computer. I love travelling,
+        Mostly I can be found in front of my computer. I love travelling, reading,
         babbling, and I am my experiences of them. I write sometimes, using
         {' '}
         <Link href="/articles">Articles Section</Link>

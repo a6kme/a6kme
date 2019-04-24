@@ -1,6 +1,6 @@
 import React from 'react';
 import Article from '../../components/articles';
-import { html, attributes } from '../../content/make-your-web-deployment-serverless.md';
+import { html, attributes } from '../../content/serverless-web-deployment.md';
 
 const ServerLessDeployment = () => (
   <Article

@@ -1,6 +1,6 @@
 import React from 'react';
 import Article from '../../components/articles';
-import { html, attributes } from '../../content/the-missing-guide-to-create-an-npm-library.md';
+import { html, attributes } from '../../content/npm-package-part-2.md';
 
 const MissingGuideToNpm = () => (
   <Article

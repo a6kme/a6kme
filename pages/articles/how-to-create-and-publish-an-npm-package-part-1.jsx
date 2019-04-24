@@ -1,12 +1,12 @@
 import React from 'react';
 import Article from '../../components/articles';
-import { html, attributes } from '../../content/host-own-blog.md';
+import { html, attributes } from '../../content/npm-package-part-1.md';
 
-const OwnBlog = () => (
+const MissingGuideToNpm = () => (
   <Article
     html={html}
     attributes={attributes}
   />
 );
 
-export default OwnBlog;
+export default MissingGuideToNpm;
