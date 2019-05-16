@@ -37,35 +37,35 @@ const styles = {
     }
   },
   header_nav_selected: {
-    color: FONT_SELECTED_COLOR
+    color: `${FONT_SELECTED_COLOR} !important`
   }
 };
 
 const Header = (props) => {
-  const { classes } = props;
-  const homeSelected = true;
-  const articlesSelected = false;
+  const { classes, router: { pathname } } = props;
+  const articlesSelected = pathname.startsWith('/articles');
+  const aboutSelected = pathname === '/';
   return (
     <div className={classes.header_root}>
       <AppBar position="static" className={classes.header_nav}>
         <div className={classes.header_toolbar}>
           <ul>
-            <li className={homeSelected ? classes.header_nav_selected : ''}>
+            <li>
               <Link href="/">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a>
-                  Home
+                <a className={aboutSelected ? classes.header_nav_selected : ''}>
+                  About
                 </a>
               </Link>
             </li>
-            {/* <li className={articlesSelected ? classes.header_nav_selected : ''}>
+            <li>
               <Link href="/articles">
-                eslint-disable-next-line jsx-a11y/anchor-is-valid
-                <a>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a className={articlesSelected ? classes.header_nav_selected : ''}>
                   Articles
                 </a>
               </Link>
-            </li> */}
+            </li>
           </ul>
         </div>
       </AppBar>
@@ -74,7 +74,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Header);
