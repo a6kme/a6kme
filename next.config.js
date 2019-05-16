@@ -14,12 +14,14 @@ module.exports = {
   },
   async exportPathMap(defaultPathMap,
     {
-      dir, outDir
+      dir, outDir, dev
     }) {
     createArticlePages(dir);
-    ['robots.txt', 'sitemap.xml'].forEach(fileName => fs.copyFileSync(
-      path.join(dir, fileName), path.join(outDir, fileName)
-    ));
+    if (!dev) {
+      ['robots.txt', 'sitemap.xml'].forEach(fileName => fs.copyFileSync(
+        path.join(dir, fileName), path.join(outDir, fileName)
+      ));
+    }
     return defaultPathMap;
   }
 };

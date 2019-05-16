@@ -54,29 +54,31 @@ const Articles = (props) => {
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
       <li className={classes.articles}>
-      <Link href="/articles/how-to-create-and-publish-an-npm-package">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
+        <a href="/articles/how-to-create-and-publish-an-npm-package">
           <span>May 15, 2019</span>
           <h5>The guide to create and publish an NPM Package</h5>
           <p>
-            A quick tutorial to create and publish npm packages using <code>@a6kme/create-npm-package</code> CLI
+            A quick tutorial to create and publish npm packages using
+            {' '}
+            <code>@a6kme/create-npm-package</code>
+            {' '}
+            CLI
           </p>
         </a>
-      </Link>
-    </li>
-    <li className={classes.articles}>
-      <Link href="/articles/why-i-decided-to-host-my-own-blog">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
+      </li>
+      <li className={classes.articles}>
+        <a href="/articles/why-i-decided-to-host-my-own-blog">
           <span>April 20, 2019</span>
           <h5>Why I decided to host my own blog instead of going for service providers</h5>
           <p>
-            I would like to explain the rationale behind why I decided to host my own blog using <code>markdown</code> files instead of going for a hosted provider like Medium or WordPress.
+            I would like to explain the rationale behind why I decided to host my own blog using
+            {' '}
+            <code>markdown</code>
+            {' '}
+            files instead of going for a hosted provider like Medium or WordPress.
           </p>
         </a>
-      </Link>
-    </li>
+      </li>
     </ul>
   );
 };

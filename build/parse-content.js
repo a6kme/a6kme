@@ -41,16 +41,13 @@ module.exports = function createArticlePages(dir) {
     );
     const articleDate = articleAttribute.date;
     const articleListContent = `<li className={classes.articles}>
-      <Link href="/articles/${articleAttribute.url}">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
+        <a href="/articles/${articleAttribute.url}">
           <span>${monthNames[articleDate.getMonth()]} ${articleDate.getDate()}, ${articleDate.getFullYear()}</span>
           <h5>${articleAttribute.title}</h5>
           <p>
             ${articleAttribute.abstract}
           </p>
         </a>
-      </Link>
     </li>`;
     articlesLiContent = articlesLiContent === '' ? articleListContent : `${articlesLiContent}
     ${articleListContent}`;
