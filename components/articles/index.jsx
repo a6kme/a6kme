@@ -7,6 +7,10 @@ import PropTypes from 'prop-types';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH, LINK_COLOR } from '../constants';
 
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
 const styles = theme => ({
   root: {
     maxWidth: MAX_CONTENT_WIDTH,
@@ -72,44 +76,66 @@ const styles = theme => ({
   },
   disqus: {
     marginTop: '4em'
+  },
+  date: {
+    fontSize: '0.9em !important',
+    color: 'rgba(0, 0, 0, 0.68) !important',
+    marginBottom: '0.9em',
   }
 });
 
 const Article = ({
-  classes, html, attributes: { title, hero: { img, alt, credit }, edit }, router: { pathname }
-}) => (
-  <div className={classes.root}>
-    <h4>{title}</h4>
+  classes, html, attributes: {
+    date, title, hero: { img, alt, credit }, edit
+  }, router: { pathname }
+}) => {
+  const articleDate = new Date(date);
+  return (
+    <div className={classes.root}>
+      <h4>{title}</h4>
+      <p className={classes.date}>
+        {monthNames[articleDate.getMonth()]}
+        {' '}
+        {articleDate.getDate()}
+        ,
+        {' '}
+        {articleDate.getFullYear()}
+      </p>
 
-    {/* Hero Banner Section */}
-    <div className={classes.hero_banner}>
-      <img src={img} alt={alt} />
-      <p>{credit}</p>
-    </div>
+      {/* Hero Banner Section */}
+      <div className={classes.hero_banner}>
+        <img src={img} alt={alt} />
+        <p>{credit}</p>
+      </div>
 
-    {/* Article content section, parsed from markdown */}
-    {/* eslint-disable-next-line react/no-danger */}
-    <div dangerouslySetInnerHTML={{ __html: html }} />
+      {/* Article content section, parsed from markdown */}
+      {/* eslint-disable-next-line react/no-danger */}
+      <div dangerouslySetInnerHTML={{ __html: html }} />
 
-    <p style={{ textAlign: 'center', marginTop: '2em' }}>_ _ _ _</p>
-    <p>
+      <p style={{ textAlign: 'center', marginTop: '2em' }}>_ _ _ _</p>
+      <p>
       Thank you so much for taking time to go through this.
-      <span role="img" aria-labelledby="Heart">❤️ </span>
+        <span role="img" aria-labelledby="Heart">❤️ </span>
       If you feel there is some typo in this article, or some of the content can be improved, please
       feel free to
-      {' '}
-      <a href={edit} target="_blank" rel="noopener noreferrer">Edit this Post</a>
+        {' '}
+        <a href={edit} target="_blank" rel="noopener noreferrer">Edit this Post</a>
       . Or you can go back to continue reading other
-      {' '}
-      <Link href="/articles">Articles.</Link>
-      <span role="img" aria-labelledby="Grinning Face">😀</span>
-    </p>
+        {' '}
+        <Link href="/articles">
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a>
+          articles
+          </a>
+        </Link>
+        <span role="img" aria-labelledby="Grinning Face">. 😀</span>
+      </p>
 
-    {/* Disqus comment section */}
-    <div id="disqus_thread" className={classes.disqus} />
-    {/* eslint-disable-next-line react/no-danger */}
-    <script dangerouslySetInnerHTML={{
-      __html: `
+      {/* Disqus comment section */}
+      <div id="disqus_thread" className={classes.disqus} />
+      {/* eslint-disable-next-line react/no-danger */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
         var disqus_config = function () {
         this.page.url = 'https://a6k.me/${pathname}';
         this.page.identifier = '${pathname}';
@@ -120,16 +146,17 @@ const Article = ({
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
         })();`
-    }}
-    />
-    <noscript>
+      }}
+      />
+      <noscript>
       Please enable JavaScript to view the
-      {' '}
-      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-    <script id="dsq-count-scr" src="//a6k-me.disqus.com/count.js" async />
-  </div>
-);
+        {' '}
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+      <script id="dsq-count-scr" src="//a6k-me.disqus.com/count.js" async />
+    </div>
+  );
+};
 
 Article.propTypes = {
   classes: PropTypes.object.isRequired,

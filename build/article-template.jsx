@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import Article from '../../components/articles';
-import { html, attributes } from '../../content/host-own-blog.md';
+import { html, attributes } from '../../content/<%=mdFileName%>';
 
 const ArticleContent = () => (
   <Article

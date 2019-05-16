@@ -2,7 +2,8 @@
 title: The guide to create and publish an NPM Package
 url: how-to-create-and-publish-an-npm-package
 edit: https://github.com/a6kme/a6kme/edit/master/content/npm-package.md
-date: 2019-04-20T15:00:00.000Z
+date: 2019-05-15T15:00:00.000Z
+abstract: A quick tutorial to create and publish npm packages using <code>@a6kme/create-npm-package</code> CLI
 hero:
   img: /static/articles/hero/npm-package.jpg
   alt: Create NPM Package
@@ -10,7 +11,7 @@ hero:
 ---
 Recently, I thought it would be a good idea to modularise some of my JavaScript code into reusable `npm` packages. It started out as something very trivial, but I had to spend considerable amount of time into setting everything and get it working. This article is an attempt to summarize the learning, and create something useful.
 
-To make things simpler and to reduce boilerplate code generation, I have created and published a CLI tool. The tool can be found on [npm repository](https://www.npmjs.com/package/@a6kme/create-npm-package). We will be using this CLI to generate the boilerplate code for npm package. Below are the steps to be taken to create and publish your first node package. 
+To make things simpler and to reduce boilerplate code generation, I have created and published a CLI tool. The tool can be found on [npm repository](https://www.npmjs.com/package/@a6kme/create-npm-package), and the source code for it can be found on [GitHub](https://github.com/a6kme/create-npm-package). We will be using this CLI to generate the boilerplate code for npm package. Below are the steps to be taken to create and publish your first node package. 
 
 1) **Setup NPM Account 🔑**
 
@@ -20,7 +21,7 @@ One needs an NPM account to be able to publish the packages on npm registry. Hea
 
 `npm install -g @a6kme/create-npm-package`
 
-3) **Create the package boilerplate folder 📁**
+3) **Create the package folder 📁**
 
 Once you have come up with a name for your package, create the boilerplate for that package with command `create-npm-package <YOUR_PACKAGE_NAME>`
 

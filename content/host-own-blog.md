@@ -3,6 +3,7 @@ title: Why I decided to host my own blog instead of going for service providers
 date: 2019-04-20T15:00:00.000Z
 url: why-i-decided-to-host-my-own-blog
 edit: https://github.com/a6kme/a6kme/edit/master/content/host-own-blog.md
+abstract: I would like to explain the rationale behind why I decided to host my own blog using <code>markdown</code> files instead of going for a hosted provider like Medium or WordPress.
 hero:
   img: /static/articles/hero/host-own-blog.jpg
   alt: Host own blog
