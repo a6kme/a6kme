@@ -91,9 +91,10 @@ const Article = ({
     {/* eslint-disable-next-line react/no-danger */}
     <div dangerouslySetInnerHTML={{ __html: html }} />
 
+    <p style={{ textAlign: 'center', marginTop: '2em' }}>_ _ _ _</p>
     <p>
       Thank you so much for taking time to go through this.
-      <span role="img" aria-labelledby="Heart">❤️</span>
+      <span role="img" aria-labelledby="Heart">❤️ </span>
       If you feel there is some typo in this article, or some of the content can be improved, please
       feel free to
       {' '}

@@ -53,27 +53,17 @@ const Articles = (props) => {
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
       <li className={classes.articles}>
-        <Link href="/articles/how-to-create-and-publish-an-npm-package-part-2">
+        <Link href="/articles/how-to-create-and-publish-an-npm-package">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
             <span>March 5, 2019</span>
-            <h5>How to create and publish an NPM package - Part 2</h5>
+            <h5>How to create and publish an NPM package</h5>
             <p>
-              This one builds on top of Part 1 of article by same name. This one talks about
-              optimizing the build size of package.
-            </p>
-          </a>
-        </Link>
-      </li>
-      <li className={classes.articles}>
-        <Link href="/articles/how-to-create-and-publish-an-npm-package-part-1">
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a>
-            <span>March 5, 2019</span>
-            <h5>How to create and publish an NPM package - Part 1</h5>
-            <p>
-              This is my attempt to organize the methods and resources necessary to be able to
-              create and publish an NPM library.
+              Use the CLI tool
+              {' '}
+              <code>@a6kme/create-npm-package</code>
+              {' '}
+              to create and publish an NPM package, without scratching your head.
             </p>
           </a>
         </Link>

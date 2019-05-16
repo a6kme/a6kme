@@ -1,7 +1,7 @@
 ---
 title: Why I decided to host my own blog instead of going for service providers
 date: 2019-04-20T15:00:00.000Z
-url: how-to-create-and-publish-an-npm-package-part-1
+url: why-i-decided-to-host-my-own-blog
 edit: https://github.com/a6kme/a6kme/edit/master/content/host-own-blog.md
 hero:
   img: /static/articles/hero/host-own-blog.jpg

@@ -21,7 +21,7 @@ class MyDocument extends Document {
             name="theme-color"
             content={pageContext ? pageContext.theme.palette.primary.main : null}
           />
-          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet" />
           {/* Google Tag Manager */}
           {/* eslint-disable-next-line react/no-danger */}
           <script dangerouslySetInnerHTML={{
