@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const createArticlePages = require('./build/parse-content');
 
 module.exports = {
@@ -12,9 +14,12 @@ module.exports = {
   },
   async exportPathMap(defaultPathMap,
     {
-      dir
+      dir, outDir
     }) {
     createArticlePages(dir);
+    ['robots.txt', 'sitemap.xml'].forEach(fileName => fs.copyFileSync(
+      path.join(dir, fileName), path.join(outDir, fileName)
+    ));
     return defaultPathMap;
   }
 };
