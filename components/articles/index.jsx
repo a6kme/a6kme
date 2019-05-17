@@ -14,6 +14,7 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
 const styles = theme => ({
   root: {
     maxWidth: MAX_CONTENT_WIDTH,
+    fontSize: '21px',
     margin: '2em auto',
     [theme.breakpoints.down('sm')]: {
       margin: '1em 1em'
@@ -22,13 +23,17 @@ const styles = theme => ({
       ...theme.typography.h4
     },
     '& p': {
-      ...theme.typography.body1
+      ...theme.typography.body1,
+      fontSize: 'inherit',
+      lineHeight: '33px'
     },
     '& li': {
       ...theme.typography.body1,
-      marginBottom: '.75em'
+      marginBottom: '.75em',
+      fontSize: 'inherit'
     },
     '& code': {
+      fontSize: 'inherit',
       fontFamily: '"Inconsolata", monospace',
       backgroundColor: 'rgba(27,31,35,.05)'
     },
