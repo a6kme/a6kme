@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Main, NextScript } from 'next/document';
+import Head from 'next/head';
 import flush from 'styled-jsx/server';
 
 class MyDocument extends Document {

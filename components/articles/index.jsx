@@ -3,6 +3,7 @@ import {
   withStyles
 } from '@material-ui/core';
 import Link from 'next/link';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH, LINK_COLOR } from '../constants';
@@ -97,6 +98,9 @@ const Article = ({
   const articleDate = new Date(date);
   return (
     <div className={classes.root}>
+      <Head>
+        <meta property="og:image" content={img} />
+      </Head>
       <h4>{title}</h4>
       <p className={classes.date}>
         {monthNames[articleDate.getMonth()]}
