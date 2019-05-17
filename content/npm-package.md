@@ -11,7 +11,9 @@ hero:
 ---
 Recently, I thought it would be a good idea to modularise some of my JavaScript code into reusable `npm` packages. It started out as something very trivial, but I had to spend considerable amount of time into setting everything and get it working. This article is an attempt to summarize the learning, and create something useful.
 
-To make things simpler and to reduce boilerplate code generation, I have created and published a CLI tool. The tool can be found on [npm repository](https://www.npmjs.com/package/@a6kme/create-npm-package), and the source code for it can be found on [GitHub](https://github.com/a6kme/create-npm-package). We will be using this CLI to generate the boilerplate code for npm package. Below are the steps to be taken to create and publish your first node package. 
+To make things simpler and to reduce boilerplate code generation, I have created and published a CLI tool. The tool can be found on [npm repository](https://www.npmjs.com/package/@a6kme/create-npm-package), and the source code for it can be found on [GitHub](https://github.com/a6kme/create-npm-package). We will be using this CLI to generate the boilerplate code for npm package. Please watch the below video to see it in action, and follow below instructions to give it a spin. 
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/QtPhERfqmxY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 1) **Setup NPM Account 🔑**
 
