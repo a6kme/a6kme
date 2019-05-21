@@ -1,6 +1,5 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
-import Link from 'next/link';
 import {
   withStyles
 } from '@material-ui/core';
