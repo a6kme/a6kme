@@ -92,7 +92,9 @@ const styles = theme => ({
 
 const Article = ({
   classes, html, attributes: {
-    date, title, hero: { img, alt, credit }, edit
+    date, title, hero: {
+      img, alt, credit
+    }, edit, abstract,
   }, router: { pathname }
 }) => {
   const articleDate = new Date(date);
@@ -101,6 +103,7 @@ const Article = ({
       <Head>
         {/* LinkedIn was Unable to resolve relative URL */}
         <meta property="og:image" content={`${SITE_URL}${img}`} />
+        <meta property="og:description" content={abstract} />
       </Head>
       <h4>{title}</h4>
       <p className={classes.date}>
