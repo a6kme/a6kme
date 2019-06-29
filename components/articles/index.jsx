@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import withLayout from '../../src/lib/with-layout';
-import { MAX_CONTENT_WIDTH, LINK_COLOR } from '../constants';
+import { MAX_CONTENT_WIDTH, LINK_COLOR, SITE_URL } from '../constants';
 
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
@@ -99,7 +99,8 @@ const Article = ({
   return (
     <div className={classes.root}>
       <Head>
-        <meta property="og:image" content={img} />
+        {/* LinkedIn was Unable to resolve relative URL */}
+        <meta property="og:image" content={`${SITE_URL}${img}`} />
       </Head>
       <h4>{title}</h4>
       <p className={classes.date}>
