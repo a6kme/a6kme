@@ -102,8 +102,10 @@ const Article = ({
     <div className={classes.root}>
       <Head>
         {/* LinkedIn was Unable to resolve relative URL */}
+        <meta property="og:type" content="article" />
         <meta property="og:image" content={`${SITE_URL}${img}`} />
         <meta property="og:description" content={abstract} />
+        <meta property="og:title" content={title} />
       </Head>
       <h4>{title}</h4>
       <p className={classes.date}>
