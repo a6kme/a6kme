@@ -31,11 +31,6 @@ export default () => {
       alt: 'GoodReads',
       img: 'static/icons/goodreads.svg',
       href: 'https://www.goodreads.com/a6kme'
-    },
-    {
-      alt: 'Facebook',
-      img: 'static/icons/fb.svg',
-      href: 'https://www.facebook.com/a6kme'
     }
   ];
   const linksList = [];
