@@ -1,8 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
-import {
-  withStyles
-} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
@@ -19,7 +17,7 @@ const styles = theme => ({
     '&>p': {
       ...theme.typography.subtitle1,
       textAlign: 'center'
-    },
+    }
   },
   articles: {
     borderTop: '1px solid #f0edea',
@@ -43,8 +41,8 @@ const styles = theme => ({
       fontFamily: '"Inconsolata", monospace',
       backgroundColor: 'rgba(27,31,35,.05)',
       padding: '1px 5px'
-    },
-  },
+    }
+  }
 });
 
 const Articles = (props) => {
@@ -52,13 +50,32 @@ const Articles = (props) => {
   return (
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
+
+      <li className={classes.articles}>
+        <a href="/articles/zero-downtime-deployment-using-aws-alb-on-kubernetes">
+          <span>February 24th, 2020</span>
+          <h5>
+            Zero Downtime Deployment Upgrades using AWS ALB on Kubernetes
+          </h5>
+          <p>
+          AWS Application Load Balancer gives better API and feature set as
+           compared to Classic Load Balancers. In this article, I will show
+           you how we configured our Kubernetes Deployment at PushOwl to
+           do rolling upgrades of our pods without any outage.
+          </p>
+        </a>
+      </li>
       <li className={classes.articles}>
         <a href="/articles/performance-test-a-service-with-jmeter-and-scale-with-docker">
           <span>June 28, 2019</span>
-          <h5>Performance test a service using Apache JMeter and scale using Docker</h5>
+          <h5>
+            Performance test a service using Apache JMeter and scale using
+            Docker
+          </h5>
           <p>
-          In this article, we will test a single instance of our service with Apache JMeter
-          and see how horizontally scaling our app with Docker can improve performance significantly
+            In this article, we will test a single instance of our service with
+            Apache JMeter and see how horizontally scaling our app with Docker
+            can improve performance significantly
           </p>
         </a>
       </li>
@@ -78,9 +95,13 @@ const Articles = (props) => {
       <li className={classes.articles}>
         <a href="/articles/why-i-decided-to-host-my-own-blog">
           <span>April 20, 2019</span>
-          <h5>Why I decided to host my own blog instead of going for service providers</h5>
+          <h5>
+            Why I decided to host my own blog instead of going for service
+            providers
+          </h5>
           <p>
-            I would like to explain the rationale behind why I decided to host my own blog using
+            I would like to explain the rationale behind why I decided to host
+            my own blog using
             {' '}
             <code>markdown</code>
             {' '}
