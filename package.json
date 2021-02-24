@@ -6,16 +6,12 @@
   "author": "Abhishek <abhishek@credifiable.com>",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "front-matter": "^3.0.2",
-    "jss": "^9.8.7",
-    "lodash": "^4.17.19",
-    "next": "^9.3.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-jss": "^8.6.1",
-    "styled-jsx": "^3.2.1"
+    "@material-ui/core": "latest",
+    "clsx": "latest",
+    "next": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "scripts": {
     "dev": "next",
@@ -25,11 +21,11 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.1",
-    "eslint-config-airbnb": "^17.1.0",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "frontmatter-markdown-loader": "^1.6.0"
+    "frontmatter-markdown-loader": "^3.6.2"
   }
 }

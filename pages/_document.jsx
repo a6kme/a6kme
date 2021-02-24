@@ -1,59 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Document, { Head, Main, NextScript } from 'next/document';
-import flush from 'styled-jsx/server';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheets } from '@material-ui/core/styles';
+import theme from '../src/theme';
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
   render() {
-    const { pageContext } = this.props;
-
     return (
-      <html lang="en" prefix="og: http://ogp.me/ns#" dir="ltr">
+      <Html lang="en">
         <Head>
-          <meta charSet="utf-8" />
-          {/* Use minimum-scale=1 to enable GPU rasterization */}
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
           {/* PWA primary color */}
-          <meta
-            name="theme-color"
-            content={pageContext ? pageContext.theme.palette.primary.main : null}
+          <meta name="theme-color" content={theme.palette.primary.main} />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet" />
-          {/* Google Tag Manager */}
-          {/* eslint-disable-next-line react/no-danger */}
-          <script dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-5SPC8SX');`
-          }}
-          />
-          {/* End Google Tag Manager */}
         </Head>
         <body>
-          {/* Google Tag Manager (noscript) */}
-          <noscript>
-            <iframe
-              title="GTM-noscript"
-              src="https://www.googletagmanager.com/ns.html?id=GTM-5SPC8SX"
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
-          {/* End Google Tag Manager (noscript) */}
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
-MyDocument.getInitialProps = (ctx) => {
+
+// `getInitialProps` belongs to `_document` (instead of `_app`),
+// it's compatible with server-side generation (SSG).
+MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -77,38 +50,19 @@ MyDocument.getInitialProps = (ctx) => {
   // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
-  let pageContext;
-  const page = ctx.renderPage((Component) => {
-    const WrappedComponent = (props) => {
-      // eslint-disable-next-line
-      pageContext = props.pageContext;
-      return <Component {...props} />;
-    };
-    WrappedComponent.propTypes = {
-      pageContext: PropTypes.object.isRequired,
-    };
-    return WrappedComponent;
-  });
-  let css;
-  // It might be undefined, e.g. after an error.
-  if (pageContext) {
-    css = pageContext.sheetsRegistry.toString();
-  }
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
   return {
-    ...page,
-    pageContext,
+    ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
-    styles: (
-      <React.Fragment>
-        <style
-          id="jss-server-side"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: css }}
-        />
-        {flush() || null}
-      </React.Fragment>
-    ),
+    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
   };
 };
-
-export default MyDocument;

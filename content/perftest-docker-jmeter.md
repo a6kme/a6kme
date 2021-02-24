@@ -5,7 +5,7 @@ url: performance-test-a-service-with-jmeter-and-scale-with-docker
 edit: https://github.com/a6kme/a6kme/edit/master/content/perftest-docker-jmeter.md
 abstract: In this article, we will test a single instance of our service with Apache JMeter and see how horizontally scaling our app with Docker can improve performance significantly
 hero:
-  img: /static/articles/hero/docker.png
+  img: /articles/hero/docker.png
   alt: Performance test a service using JMeter
   credit: Source - https://99designs.com/ 
 ---
@@ -30,7 +30,7 @@ We have a simple containerised Node application, in which I have mocked a networ
 - JMeter sending load to a single container of Node app
 - JMeter sending load to nginx reverse proxy, which will be balancing load on 3 containers of the same app
 
-<img src="/static/articles/perftest-jmeter/scenarios.jpg">
+<img src="/articles/perftest-jmeter/scenarios.jpg">
 
 We will be doing 2 experiments, one with 1000 threads and another with 6000 threads, with ramp up time of 1 minute (60 Seconds), and show that at lower throughput, the 95th and 99th percentiles are not affected as badly as higher throughput.
 
@@ -38,25 +38,25 @@ We will be doing 2 experiments, one with 1000 threads and another with 6000 thre
 
 #### Scenario 1
 
-<img src="/static/articles/perftest-jmeter/scenario-1-apdex-1000.png">
-<img src="/static/articles/perftest-jmeter/scenario-1-1000.png">
+<img src="/articles/perftest-jmeter/scenario-1-apdex-1000.png">
+<img src="/articles/perftest-jmeter/scenario-1-1000.png">
 
 #### Scenario 2
 
-<img src="/static/articles/perftest-jmeter/scenario-2-apdex-1000.png">
-<img src="/static/articles/perftest-jmeter/scenario-2-1000.png">
+<img src="/articles/perftest-jmeter/scenario-2-apdex-1000.png">
+<img src="/articles/perftest-jmeter/scenario-2-1000.png">
 
 ### 6000 Threads
 
 #### Scenario 1
 
-<img src="/static/articles/perftest-jmeter/scenario-1-apdex-6000.png">
-<img src="/static/articles/perftest-jmeter/scenario-1-6000.png">
+<img src="/articles/perftest-jmeter/scenario-1-apdex-6000.png">
+<img src="/articles/perftest-jmeter/scenario-1-6000.png">
 
 #### Scenario 2
 
-<img src="/static/articles/perftest-jmeter/scenario-2-apdex-6000.png">
-<img src="/static/articles/perftest-jmeter/scenario-2-6000.png">
+<img src="/articles/perftest-jmeter/scenario-2-apdex-6000.png">
+<img src="/articles/perftest-jmeter/scenario-2-6000.png">
 
 As it is evident from the test results, at lower throughput, the improvement in 99th percentile and 95th percentile is not much. 
 

@@ -77,7 +77,7 @@ const Index = (props) => {
       <Typography gutterBottom align="center" variant="subtitle1">
         Welcome to my e-home in Cybernet. I can be recognized with below photo.
       </Typography>
-      <img alt="a6kme" src="/static/home/a6kme.jpg" className={classes.profile_pic} />
+      <img alt="a6kme" src="/home/a6kme.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
         Mostly I can be found in front of my computer. I love travelling, reading,
         babbling, and I am my experiences of them. I write sometimes, using
@@ -113,7 +113,7 @@ const Index = (props) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="static/tools/music.jpg" alt="music scale" />
+          <img src="/tools/music.jpg" alt="music scale" />
         </a>
       </div>
     </div>
