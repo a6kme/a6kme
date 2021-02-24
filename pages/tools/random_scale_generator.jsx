@@ -7,7 +7,7 @@ import Link from 'next/link';
 import withLayout from '../../src/lib/with-layout';
 import { BACKGROUND_COLOR, MAX_CONTENT_WIDTH } from '../../components/constants';
 import ExternalLinksAndImages from '../../components/homepage/links';
-import { getScale, getNotesOfScale } from './scales';
+import { getScale, getNotesOfScale } from '../../src/lib/scales';
 
 const styles = theme => ({
 
