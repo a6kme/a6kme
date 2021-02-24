@@ -102,6 +102,20 @@ const Index = (props) => {
       <div className={classes.links_container}>
         <ExternalLinksAndImages />
       </div>
+      <hr />
+      <Typography gutterBottom align="center" variant="subtitle1">
+        Tools
+      </Typography>
+      <div className={classes.links_container}>
+        <a
+          key="random_scale_generator"
+          href="/tools/random_scale_generator"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="static/tools/music.jpg" alt="music scale" />
+        </a>
+      </div>
     </div>
   );
 };
