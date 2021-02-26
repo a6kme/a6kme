@@ -66,6 +66,14 @@ const Header = (props) => {
                 </a>
               </Link>
             </li>
+            <li>
+              <Link href="/tools">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a className={articlesSelected ? classes.header_nav_selected : ''}>
+                  Tools
+                </a>
+              </Link>
+            </li>
           </ul>
         </div>
       </AppBar>

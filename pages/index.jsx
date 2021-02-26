@@ -8,7 +8,7 @@ import withLayout from '../src/lib/with-layout';
 import { BACKGROUND_COLOR, MAX_CONTENT_WIDTH } from '../components/constants';
 import ExternalLinksAndImages from '../components/homepage/links';
 
-const styles = theme => ({
+const styles = (theme) => ({
   homepage_container: {
     maxWidth: MAX_CONTENT_WIDTH,
     width: '100%',
@@ -110,7 +110,6 @@ const Index = (props) => {
         <a
           key="random_scale_generator"
           href="/tools/random_scale_generator"
-          target="_blank"
           rel="noopener noreferrer"
         >
           <img src="/tools/music.jpg" alt="music scale" />
