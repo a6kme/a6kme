@@ -18,10 +18,11 @@ module.exports = {
     }) {
     createArticlePages(dir);
     if (!dev) {
-      ['robots.txt', 'sitemap.xml'].forEach(fileName => fs.copyFileSync(
+      ['robots.txt', 'sitemap.xml'].forEach((fileName) => fs.copyFileSync(
         path.join(dir, fileName), path.join(outDir, fileName)
       ));
     }
     return defaultPathMap;
-  }
+  },
+  trailingSlash: true
 };
