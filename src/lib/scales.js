@@ -16,4 +16,4 @@ const scaleNotes = {
   Gm: 'G A B♭ C D E♭ F G'
 };
 export const getScale = () => scales[Math.floor(Math.random() * scales.length)];
-export const getNotesOfScale = scale => scaleNotes[scale];
+export const getNotesOfScale = (scale) => scaleNotes[scale];
