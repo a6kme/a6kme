@@ -13,6 +13,7 @@ import { getScale, getNotesOfScale } from '../../src/lib/scales';
 const styles = (theme) => ({
   container: {
     maxWidth: MAX_CONTENT_WIDTH,
+    width: '40em',
     margin: '6em auto',
     [theme.breakpoints.down('sm')]: {
       margin: '3em auto'
@@ -21,13 +22,16 @@ const styles = (theme) => ({
     listStyle: 'none',
   },
   scalesContainer: {
-    width: '50em',
     '& p': {
-      fontSize: '2em'
+      fontSize: '1.5em'
     },
     '& span': {
       padding: '0.5em'
     }
+  },
+  scale: {
+    display: 'flex',
+    justifyContent: 'space-between'
   },
   bpmContainer: {
     '& p': {
@@ -36,6 +40,9 @@ const styles = (theme) => ({
   },
   selectedNote: {
     backgroundColor: 'green'
+  },
+  nextScale: {
+    color: 'gray'
   }
 });
 
@@ -47,6 +54,7 @@ class RandomScaleGenerator extends React.Component {
     this.state = {
       beatCount: 0,
       scale: getScale(),
+      nextScale: getScale(),
       bpm: 60
     };
   }
@@ -73,13 +81,17 @@ class RandomScaleGenerator extends React.Component {
   }
 
   tick() {
-    const { beatCount, scale } = this.state;
-    let updatedScale = null;
+    const { beatCount, scale, nextScale } = this.state;
+    let currentScale = scale;
+    let upcomingScale = nextScale;
     if (beatCount && (beatCount + 1) % 8 === 0) {
-      updatedScale = getScale();
+      currentScale = nextScale;
+      upcomingScale = getScale();
     }
+
     this.setState({
-      scale: updatedScale || scale,
+      scale: currentScale,
+      nextScale: upcomingScale,
       beatCount: beatCount + 1
     });
   }
@@ -102,7 +114,7 @@ class RandomScaleGenerator extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { scale, bpm } = this.state;
+    const { scale, bpm, nextScale } = this.state;
     const notes = getNotesOfScale(scale);
     return (
       <div className={classes.container}>
@@ -136,22 +148,31 @@ class RandomScaleGenerator extends React.Component {
         </div>
         <hr />
         <div className={classes.scalesContainer}>
-          <p className={classes.scale}>
-            Scale:
-            {' '}
-            <span>{scale}</span>
-          </p>
-          <p className={classes.notes}>
-            Notes:
-            {' '}
-            {notes.map((note, index) => {
-              const uniqueKey = `${scale}_${index}`;
-              if (this.isNoteSelected(index)) {
-                return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
-              }
-              return <span key={uniqueKey}>{note}</span>;
-            })}
-          </p>
+          <div className={classes.scale}>
+            <p>
+              Scale:
+              {' '}
+              <span>{scale}</span>
+            </p>
+            <p className={classes.nextScale}>
+              Next Scale:
+              {' '}
+              <span>{nextScale}</span>
+            </p>
+          </div>
+          <div className={classes.notes}>
+            <p>
+              Notes:
+              {' '}
+              {notes.map((note, index) => {
+                const uniqueKey = `${scale}_${index}`;
+                if (this.isNoteSelected(index)) {
+                  return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
+                }
+                return <span key={uniqueKey}>{note}</span>;
+              })}
+            </p>
+          </div>
         </div>
       </div>
     );
