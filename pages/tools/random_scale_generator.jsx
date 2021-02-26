@@ -39,10 +39,13 @@ const styles = (theme) => ({
     }
   },
   selectedNote: {
-    backgroundColor: 'green'
+    backgroundColor: '#d7e360'
   },
   nextScale: {
     color: 'gray'
+  },
+  currentScale: {
+    backgroundColor: '#a2cf6e'
   }
 });
 
@@ -118,6 +121,34 @@ class RandomScaleGenerator extends React.Component {
     const notes = getNotesOfScale(scale);
     return (
       <div className={classes.container}>
+        <div className={classes.scalesContainer}>
+          <div className={classes.scale}>
+            <p>
+              Current Scale:
+              {' '}
+              <span className={classes.currentScale}>{scale}</span>
+            </p>
+            <p className={classes.nextScale}>
+              Next Scale:
+              {' '}
+              <span>{nextScale}</span>
+            </p>
+          </div>
+          <div className={classes.notes}>
+            <p>
+              Notes:
+              {' '}
+              {notes.map((note, index) => {
+                const uniqueKey = `${scale}_${index}`;
+                if (this.isNoteSelected(index)) {
+                  return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
+                }
+                return <span key={uniqueKey}>{note}</span>;
+              })}
+            </p>
+          </div>
+        </div>
+        <hr />
         <div className={classes.bpmContainer}>
           <p>
             BPM:
@@ -144,34 +175,6 @@ class RandomScaleGenerator extends React.Component {
               -
               {bpmDiff}
             </Button>
-          </div>
-        </div>
-        <hr />
-        <div className={classes.scalesContainer}>
-          <div className={classes.scale}>
-            <p>
-              Scale:
-              {' '}
-              <span>{scale}</span>
-            </p>
-            <p className={classes.nextScale}>
-              Next Scale:
-              {' '}
-              <span>{nextScale}</span>
-            </p>
-          </div>
-          <div className={classes.notes}>
-            <p>
-              Notes:
-              {' '}
-              {notes.map((note, index) => {
-                const uniqueKey = `${scale}_${index}`;
-                if (this.isNoteSelected(index)) {
-                  return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
-                }
-                return <span key={uniqueKey}>{note}</span>;
-              })}
-            </p>
           </div>
         </div>
       </div>

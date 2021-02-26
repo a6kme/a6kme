@@ -44,6 +44,7 @@ const styles = {
 const Header = (props) => {
   const { classes, router: { pathname } } = props;
   const articlesSelected = pathname.startsWith('/articles');
+  const toolsSelected = pathname.startsWith('/tools');
   const aboutSelected = pathname === '/';
   return (
     <div className={classes.header_root}>
@@ -69,7 +70,7 @@ const Header = (props) => {
             <li>
               <Link href="/tools">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={articlesSelected ? classes.header_nav_selected : ''}>
+                <a className={toolsSelected ? classes.header_nav_selected : ''}>
                   Tools
                 </a>
               </Link>

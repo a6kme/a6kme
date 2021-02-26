@@ -3,6 +3,7 @@ import {
   withStyles
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
 
@@ -37,14 +38,13 @@ const Tools = (props) => {
     <ul className={classes.tools_container}>
       <p>Tools</p>
       <li className={classes.tool}>
-        <a
-          key="random_scale_generator"
-          href="/tools/random_scale_generator"
-          rel="noopener noreferrer"
-        >
-          <img src="/tools/music.jpg" alt="music scale" />
-          <p>Generate random scale with BPM</p>
-        </a>
+        <Link href="/tools/random_scale_generator">
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a>
+            <img src="/tools/music.jpg" alt="music scale" />
+            <p>Generate random scale with BPM</p>
+          </a>
+        </Link>
       </li>
     </ul>
   );
