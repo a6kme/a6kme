@@ -16,7 +16,7 @@ import { getScale, getNotesOfScale } from '../../src/lib/scales';
 const styles = (theme) => ({
   container: {
     maxWidth: MAX_CONTENT_WIDTH,
-    width: '40em',
+    width: '50em',
     margin: '6em auto',
     [theme.breakpoints.down('sm')]: {
       margin: '3em auto'
@@ -29,7 +29,7 @@ const styles = (theme) => ({
       fontSize: '1.5em'
     },
     '& span': {
-      padding: '0.5em'
+      padding: '0.30em'
     }
   },
   scale: {
@@ -37,9 +37,28 @@ const styles = (theme) => ({
     justifyContent: 'space-between'
   },
   bpmContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: '1em 0',
     '& p': {
       fontSize: '1.5em'
     }
+  },
+  bpmText: {
+    margin: '0 1em'
+  },
+  bpmButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: '1em'
+  },
+  settings: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
+  toggleReverse: {
+    display: 'flex'
   },
   selectedNote: {
     backgroundColor: '#d7e360'
@@ -62,7 +81,7 @@ class RandomScaleGenerator extends React.Component {
       scale: getScale(),
       nextScale: getScale(),
       reverseNotes: true,
-      scaleDuration: 15,
+      scaleDuration: 16,
       bpm: 60
     };
   }
@@ -87,7 +106,7 @@ class RandomScaleGenerator extends React.Component {
     let notes = getNotesOfScale(scale);
     const { reverseNotes } = this.state;
     if (reverseNotes) {
-      notes = notes.concat(notes.slice().reverse().slice(1));
+      notes = notes.concat(notes.slice().reverse());
     }
     return notes;
   }
@@ -177,37 +196,37 @@ class RandomScaleGenerator extends React.Component {
           </div>
         </div>
         <hr />
-        <div className={classes.bpmContainer}>
-          <Typography variant="headline" component="h4">
-            BPM:
-            {' '}
-            {bpm}
-          </Typography>
-          <br />
-          <div>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => this.modifyBPM(bpmDiff)}
-              startIcon={<ArrowUpwardIcon />}
-            >
-              +
-              {bpmDiff}
-            </Button>
-            {' '}
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => this.modifyBPM(-bpmDiff)}
-              startIcon={<ArrowDownwardIcon />}
-            >
-              -
-              {bpmDiff}
-            </Button>
-            <br />
-            <br />
+        <div className={classes.settings}>
+          <div className={classes.bpmContainer}>
+            <div className={classes.bpmText}>
+              <Typography variant="h6">
+                BPM:
+                {' '}
+                {bpm}
+              </Typography>
+            </div>
+            <div className={classes.bpmButtons}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.modifyBPM(bpmDiff)}
+                startIcon={<ArrowUpwardIcon />}
+              >
+                +
+                {bpmDiff}
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.modifyBPM(-bpmDiff)}
+                startIcon={<ArrowDownwardIcon />}
+              >
+                -
+                {bpmDiff}
+              </Button>
+            </div>
           </div>
-          <div>
+          <div className={classes.toggleReverse}>
             <FormControlLabel
               control={(
                 <Switch
@@ -219,10 +238,9 @@ class RandomScaleGenerator extends React.Component {
                 />
                 )}
               label={
-                <Typography variant="headline" component="h4"> Reverse Notes </Typography>
+                <Typography variant="h6"> Reverse Notes </Typography>
               }
             />
-
           </div>
         </div>
       </div>
