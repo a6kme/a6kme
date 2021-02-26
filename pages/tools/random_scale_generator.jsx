@@ -4,8 +4,11 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
 import { getScale, getNotesOfScale } from '../../src/lib/scales';
@@ -58,6 +61,8 @@ class RandomScaleGenerator extends React.Component {
       beatCount: 0,
       scale: getScale(),
       nextScale: getScale(),
+      reverseNotes: true,
+      scaleDuration: 15,
       bpm: 60
     };
   }
@@ -78,16 +83,22 @@ class RandomScaleGenerator extends React.Component {
     );
   }
 
-  noteRefreshTime() {
-    const { bpm } = this.state;
-    return (60 / bpm) * 1000;
+  getNotes(scale) {
+    let notes = getNotesOfScale(scale);
+    const { reverseNotes } = this.state;
+    if (reverseNotes) {
+      notes = notes.concat(notes.slice().reverse().slice(1));
+    }
+    return notes;
   }
 
   tick() {
-    const { beatCount, scale, nextScale } = this.state;
+    const {
+      beatCount, scale, nextScale, scaleDuration
+    } = this.state;
     let currentScale = scale;
     let upcomingScale = nextScale;
-    if (beatCount && (beatCount + 1) % 8 === 0) {
+    if (beatCount && (beatCount + 1) % scaleDuration === 0) {
       currentScale = nextScale;
       upcomingScale = getScale();
     }
@@ -100,8 +111,8 @@ class RandomScaleGenerator extends React.Component {
   }
 
   isNoteSelected(index) {
-    const { beatCount } = this.state;
-    if (beatCount % 8 === index) {
+    const { beatCount, scaleDuration } = this.state;
+    if (beatCount % scaleDuration === index) {
       return true;
     }
     return false;
@@ -115,10 +126,27 @@ class RandomScaleGenerator extends React.Component {
     this.setBpmInterval();
   }
 
+  toggleReverseNotes() {
+    const { reverseNotes } = this.state;
+    const scaleDuration = !reverseNotes ? 15 : 8;
+    this.setState({
+      reverseNotes: !reverseNotes,
+      scaleDuration
+    });
+    this.setBpmInterval();
+  }
+
+  noteRefreshTime() {
+    const { bpm } = this.state;
+    return (60 / bpm) * 1000;
+  }
+
   render() {
     const { classes } = this.props;
-    const { scale, bpm, nextScale } = this.state;
-    const notes = getNotesOfScale(scale);
+    const {
+      scale, bpm, nextScale, reverseNotes
+    } = this.state;
+    const notes = this.getNotes(scale);
     return (
       <div className={classes.container}>
         <div className={classes.scalesContainer}>
@@ -150,15 +178,16 @@ class RandomScaleGenerator extends React.Component {
         </div>
         <hr />
         <div className={classes.bpmContainer}>
-          <p>
+          <Typography variant="headline" component="h4">
             BPM:
             {' '}
             {bpm}
-          </p>
+          </Typography>
+          <br />
           <div>
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={() => this.modifyBPM(bpmDiff)}
               startIcon={<ArrowUpwardIcon />}
             >
@@ -168,13 +197,32 @@ class RandomScaleGenerator extends React.Component {
             {' '}
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={() => this.modifyBPM(-bpmDiff)}
               startIcon={<ArrowDownwardIcon />}
             >
               -
               {bpmDiff}
             </Button>
+            <br />
+            <br />
+          </div>
+          <div>
+            <FormControlLabel
+              control={(
+                <Switch
+                  checked={reverseNotes}
+                  onChange={() => this.toggleReverseNotes()}
+                  color="primary"
+                  name="checkedB"
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+                )}
+              label={
+                <Typography variant="headline" component="h4"> Reverse Notes </Typography>
+              }
+            />
+
           </div>
         </div>
       </div>
