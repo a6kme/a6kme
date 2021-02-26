@@ -12,7 +12,7 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     maxWidth: MAX_CONTENT_WIDTH,
     fontSize: '21px',
@@ -129,18 +129,18 @@ const Article = ({
 
       <p style={{ textAlign: 'center', marginTop: '2em' }}>_ _ _ _</p>
       <p>
-      Thank you so much for taking time to go through this.
+        Thank you so much for taking time to go through this.
         <span role="img" aria-labelledby="Heart">❤️ </span>
-      If you feel there is some typo in this article, or some of the content can be improved, please
-      feel free to
+        If you feel there is some typo in this article, or some of the content can be improved, please
+        feel free to
         {' '}
         <a href={edit} target="_blank" rel="noopener noreferrer">Edit this Post</a>
-      . Or you can go back to continue reading other
+        . Or you can go back to continue reading other
         {' '}
         <Link href="/articles">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
-          articles
+            articles
           </a>
         </Link>
         <span role="img" aria-labelledby="Grinning Face">. 😀</span>
@@ -164,7 +164,7 @@ const Article = ({
       }}
       />
       <noscript>
-      Please enable JavaScript to view the
+        Please enable JavaScript to view the
         {' '}
         <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
       </noscript>

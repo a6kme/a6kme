@@ -8,7 +8,7 @@ import withLayout from '../src/lib/with-layout';
 import { BACKGROUND_COLOR, MAX_CONTENT_WIDTH } from '../components/constants';
 import ExternalLinksAndImages from '../components/homepage/links';
 
-const styles = theme => ({
+const styles = (theme) => ({
   homepage_container: {
     maxWidth: MAX_CONTENT_WIDTH,
     width: '100%',
@@ -77,7 +77,7 @@ const Index = (props) => {
       <Typography gutterBottom align="center" variant="subtitle1">
         Welcome to my e-home in Cybernet. I can be recognized with below photo.
       </Typography>
-      <img alt="a6kme" src="/static/home/a6kme.jpg" className={classes.profile_pic} />
+      <img alt="a6kme" src="/home/a6kme.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
         Mostly I can be found in front of my computer. I love travelling, reading,
         babbling, and I am my experiences of them. I write sometimes, using
@@ -101,6 +101,19 @@ const Index = (props) => {
       </Typography>
       <div className={classes.links_container}>
         <ExternalLinksAndImages />
+      </div>
+      <hr />
+      <Typography gutterBottom align="center" variant="subtitle1">
+        Tools
+      </Typography>
+      <div className={classes.links_container}>
+        <a
+          key="random_scale_generator"
+          href="/tools/random_scale_generator"
+          rel="noopener noreferrer"
+        >
+          <img src="/tools/music.jpg" alt="music scale" />
+        </a>
       </div>
     </div>
   );

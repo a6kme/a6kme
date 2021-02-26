@@ -21,6 +21,7 @@ export default (Component, title) => withRouter((props) => {
       }}
       >
         <Header router={router} />
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...props} />
       </div>
     </div>

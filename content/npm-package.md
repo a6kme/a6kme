@@ -5,7 +5,7 @@ edit: https://github.com/a6kme/a6kme/edit/master/content/npm-package.md
 date: 2019-05-15T15:00:00.000Z
 abstract: A quick tutorial to create and publish npm packages using <code>@a6kme/create-npm-package</code> CLI
 hero:
-  img: /static/articles/hero/npm-package.jpg
+  img: /articles/hero/npm-package.jpg
   alt: Create NPM Package
   credit: Photo by @fempreneurstyledstock on Unsplash
 ---

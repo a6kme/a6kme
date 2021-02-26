@@ -5,7 +5,7 @@ url: zero-downtime-deployment-using-aws-alb-on-kubernetes
 edit: https://github.com/a6kme/a6kme/edit/master/content/zero-downtime-deployment-eks-alb.md
 abstract: AWS Application Load Balancer gives better API and feature set as compared to Classic Load Balancers. In this article, I will show you how we configured our Kubernetes Deployment at PushOwl to do rolling upgrades of our pods without any outage.
 hero:
- img: /static/articles/hero/balance.jpg
+ img: /articles/hero/balance.jpg
  alt: AWS ALB on Kubernetes
  credit: Photo by @jeremythomasphoto on Unsplash
 ---

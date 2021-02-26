@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
 
-const styles = theme => ({
+const styles = (theme) => ({
   articles_container: {
     maxWidth: MAX_CONTENT_WIDTH,
     margin: '6em auto',
@@ -50,7 +50,6 @@ const Articles = (props) => {
   return (
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
-
       <li className={classes.articles}>
         <a href="/articles/zero-downtime-deployment-using-aws-alb-on-kubernetes">
           <span>February 24th, 2020</span>
@@ -58,10 +57,10 @@ const Articles = (props) => {
             Zero Downtime Deployment Upgrades using AWS ALB on Kubernetes
           </h5>
           <p>
-          AWS Application Load Balancer gives better API and feature set as
-           compared to Classic Load Balancers. In this article, I will show
-           you how we configured our Kubernetes Deployment at PushOwl to
-           do rolling upgrades of our pods without any outage.
+            AWS Application Load Balancer gives better API and feature set as
+            compared to Classic Load Balancers. In this article, I will show
+            you how we configured our Kubernetes Deployment at PushOwl to
+            do rolling upgrades of our pods without any outage.
           </p>
         </a>
       </li>
