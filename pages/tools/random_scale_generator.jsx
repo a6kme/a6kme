@@ -4,8 +4,11 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
 import { getScale, getNotesOfScale } from '../../src/lib/scales';
@@ -13,7 +16,7 @@ import { getScale, getNotesOfScale } from '../../src/lib/scales';
 const styles = (theme) => ({
   container: {
     maxWidth: MAX_CONTENT_WIDTH,
-    width: '40em',
+    width: '50em',
     margin: '6em auto',
     [theme.breakpoints.down('sm')]: {
       margin: '3em auto'
@@ -26,7 +29,7 @@ const styles = (theme) => ({
       fontSize: '1.5em'
     },
     '& span': {
-      padding: '0.5em'
+      padding: '0.30em'
     }
   },
   scale: {
@@ -34,9 +37,28 @@ const styles = (theme) => ({
     justifyContent: 'space-between'
   },
   bpmContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: '1em 0',
     '& p': {
       fontSize: '1.5em'
     }
+  },
+  bpmText: {
+    margin: '0 1em'
+  },
+  bpmButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: '1em'
+  },
+  settings: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
+  toggleReverse: {
+    display: 'flex'
   },
   selectedNote: {
     backgroundColor: '#d7e360'
@@ -58,6 +80,8 @@ class RandomScaleGenerator extends React.Component {
       beatCount: 0,
       scale: getScale(),
       nextScale: getScale(),
+      reverseNotes: true,
+      scaleDuration: 16,
       bpm: 60
     };
   }
@@ -78,16 +102,22 @@ class RandomScaleGenerator extends React.Component {
     );
   }
 
-  noteRefreshTime() {
-    const { bpm } = this.state;
-    return (60 / bpm) * 1000;
+  getNotes(scale) {
+    let notes = getNotesOfScale(scale);
+    const { reverseNotes } = this.state;
+    if (reverseNotes) {
+      notes = notes.concat(notes.slice().reverse());
+    }
+    return notes;
   }
 
   tick() {
-    const { beatCount, scale, nextScale } = this.state;
+    const {
+      beatCount, scale, nextScale, scaleDuration
+    } = this.state;
     let currentScale = scale;
     let upcomingScale = nextScale;
-    if (beatCount && (beatCount + 1) % 8 === 0) {
+    if (beatCount && (beatCount + 1) % scaleDuration === 0) {
       currentScale = nextScale;
       upcomingScale = getScale();
     }
@@ -100,8 +130,8 @@ class RandomScaleGenerator extends React.Component {
   }
 
   isNoteSelected(index) {
-    const { beatCount } = this.state;
-    if (beatCount % 8 === index) {
+    const { beatCount, scaleDuration } = this.state;
+    if (beatCount % scaleDuration === index) {
       return true;
     }
     return false;
@@ -115,10 +145,27 @@ class RandomScaleGenerator extends React.Component {
     this.setBpmInterval();
   }
 
+  toggleReverseNotes() {
+    const { reverseNotes } = this.state;
+    const scaleDuration = !reverseNotes ? 15 : 8;
+    this.setState({
+      reverseNotes: !reverseNotes,
+      scaleDuration
+    });
+    this.setBpmInterval();
+  }
+
+  noteRefreshTime() {
+    const { bpm } = this.state;
+    return (60 / bpm) * 1000;
+  }
+
   render() {
     const { classes } = this.props;
-    const { scale, bpm, nextScale } = this.state;
-    const notes = getNotesOfScale(scale);
+    const {
+      scale, bpm, nextScale, reverseNotes
+    } = this.state;
+    const notes = this.getNotes(scale);
     return (
       <div className={classes.container}>
         <div className={classes.scalesContainer}>
@@ -149,32 +196,51 @@ class RandomScaleGenerator extends React.Component {
           </div>
         </div>
         <hr />
-        <div className={classes.bpmContainer}>
-          <p>
-            BPM:
-            {' '}
-            {bpm}
-          </p>
-          <div>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => this.modifyBPM(bpmDiff)}
-              startIcon={<ArrowUpwardIcon />}
-            >
-              +
-              {bpmDiff}
-            </Button>
-            {' '}
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => this.modifyBPM(-bpmDiff)}
-              startIcon={<ArrowDownwardIcon />}
-            >
-              -
-              {bpmDiff}
-            </Button>
+        <div className={classes.settings}>
+          <div className={classes.bpmContainer}>
+            <div className={classes.bpmText}>
+              <Typography variant="h6">
+                BPM:
+                {' '}
+                {bpm}
+              </Typography>
+            </div>
+            <div className={classes.bpmButtons}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.modifyBPM(bpmDiff)}
+                startIcon={<ArrowUpwardIcon />}
+              >
+                +
+                {bpmDiff}
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.modifyBPM(-bpmDiff)}
+                startIcon={<ArrowDownwardIcon />}
+              >
+                -
+                {bpmDiff}
+              </Button>
+            </div>
+          </div>
+          <div className={classes.toggleReverse}>
+            <FormControlLabel
+              control={(
+                <Switch
+                  checked={reverseNotes}
+                  onChange={() => this.toggleReverseNotes()}
+                  color="primary"
+                  name="checkedB"
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+                )}
+              label={
+                <Typography variant="h6"> Reverse Notes </Typography>
+              }
+            />
           </div>
         </div>
       </div>
