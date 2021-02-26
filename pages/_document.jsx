@@ -23,6 +23,7 @@ export default class MyDocument extends Document {
           })(window,document,'script','dataLayer','GTM-5SPC8SX');`
           }}
           />
+          {/* End Google Tag Manager */}
         </Head>
         <body>
           {/* Google Tag Manager (noscript) */}
