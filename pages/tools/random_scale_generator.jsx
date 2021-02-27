@@ -11,7 +11,8 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
-import { getScale, getNotesOfScale } from '../../src/lib/scales';
+import { getScale, getNotesOfScale, getRelativeMinorScale } from '../../src/lib/scales';
+import ScalesAndNotes from './scales_and_notes';
 
 const styles = (theme) => ({
   container: {
@@ -23,18 +24,6 @@ const styles = (theme) => ({
     },
     padding: '0 2em',
     listStyle: 'none',
-  },
-  scalesContainer: {
-    '& p': {
-      fontSize: '1.5em'
-    },
-    '& span': {
-      padding: '0.25em'
-    }
-  },
-  scale: {
-    display: 'flex',
-    justifyContent: 'space-between'
   },
   bpmContainer: {
     display: 'flex',
@@ -56,18 +45,12 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'space-around'
   },
-  toggleReverse: {
-    display: 'flex'
+  toggleContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
-  selectedNote: {
-    backgroundColor: '#d7e360'
-  },
-  nextScale: {
-    color: 'gray'
-  },
-  currentScale: {
-    backgroundColor: '#a2cf6e'
-  }
+
 });
 
 const bpmDiff = 10;
@@ -75,10 +58,13 @@ const bpmDiff = 10;
 class RandomScaleGenerator extends React.Component {
   constructor(props) {
     super(props);
+    const scale = getRelativeMinorScale();
+    const nextScale = getRelativeMinorScale(scale);
     this.state = {
+      scale,
+      nextScale,
       beatCount: 0,
-      scale: getScale(),
-      nextScale: getScale(),
+      onlyRelativeMinor: true,
       reverseNotes: true,
       scaleDuration: 16,
       bpm: 60
@@ -112,13 +98,13 @@ class RandomScaleGenerator extends React.Component {
 
   tick() {
     const {
-      beatCount, scale, nextScale, scaleDuration
+      beatCount, scale, nextScale, scaleDuration, onlyRelativeMinor
     } = this.state;
     let currentScale = scale;
     let upcomingScale = nextScale;
     if (beatCount && (beatCount + 1) % scaleDuration === 0) {
       currentScale = nextScale;
-      upcomingScale = getScale();
+      upcomingScale = onlyRelativeMinor ? getRelativeMinorScale(nextScale) : getScale();
     }
 
     this.setState({
@@ -154,6 +140,13 @@ class RandomScaleGenerator extends React.Component {
     this.setBpmInterval();
   }
 
+  toggleRandomiseNotes() {
+    const { onlyRelativeMinor } = this.state;
+    this.setState({
+      onlyRelativeMinor: !onlyRelativeMinor
+    });
+  }
+
   noteRefreshTime() {
     const { bpm } = this.state;
     return (60 / bpm) * 1000;
@@ -162,36 +155,18 @@ class RandomScaleGenerator extends React.Component {
   render() {
     const { classes } = this.props;
     const {
-      scale, bpm, nextScale, reverseNotes
+      scale, bpm, nextScale, reverseNotes, onlyRelativeMinor
     } = this.state;
     const notes = this.getNotes(scale);
     return (
       <div className={classes.container}>
-        <div className={classes.scalesContainer}>
-          <div className={classes.scale}>
-            <p>
-              Current Scale:
-              {' '}
-              <span className={classes.currentScale}>{scale}</span>
-            </p>
-            <p className={classes.nextScale}>
-              Next Scale:
-              {' '}
-              <span>{nextScale}</span>
-            </p>
-          </div>
-          <div className={classes.notes}>
-            <p>
-              {notes.map((note, index) => {
-                const uniqueKey = `${scale}_${index}`;
-                if (this.isNoteSelected(index)) {
-                  return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
-                }
-                return <span key={uniqueKey}>{note}</span>;
-              })}
-            </p>
-          </div>
-        </div>
+        <ScalesAndNotes
+          notes={notes}
+          scale={scale}
+          nextScale={nextScale}
+          onlyRelativeMinor={onlyRelativeMinor}
+          isNoteSelected={(note) => this.isNoteSelected(note)}
+        />
         <hr />
         <div className={classes.settings}>
           <div className={classes.bpmContainer}>
@@ -224,7 +199,22 @@ class RandomScaleGenerator extends React.Component {
               </Button>
             </div>
           </div>
-          <div className={classes.toggleReverse}>
+          <div className={classes.toggleContainer}>
+            <FormControlLabel
+              control={(
+                <Switch
+                  checked={!onlyRelativeMinor}
+                  onChange={() => this.toggleRandomiseNotes()}
+                  color="primary"
+                  name="checkedB"
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+                )}
+              label={
+                <Typography variant="h6"> Randomise Scales </Typography>
+              }
+            />
+            <br />
             <FormControlLabel
               control={(
                 <Switch
