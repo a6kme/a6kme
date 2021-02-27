@@ -12,7 +12,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import withLayout from '../../src/lib/with-layout';
 import { MAX_CONTENT_WIDTH } from '../../components/constants';
 import { getScale, getNotesOfScale, getRelativeMinorScale } from '../../src/lib/scales';
-import ScalesAndNotes from './scales_and_notes';
 
 const styles = (theme) => ({
   container: {
@@ -50,7 +49,27 @@ const styles = (theme) => ({
     flexDirection: 'column',
     justifyContent: 'center'
   },
-
+  scalesContainer: {
+    '& p': {
+      fontSize: '1.5em'
+    },
+    '& span': {
+      padding: '0.25em'
+    }
+  },
+  scale: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  nextScale: {
+    color: 'gray'
+  },
+  currentScale: {
+    backgroundColor: '#a2cf6e'
+  },
+  selectedNote: {
+    backgroundColor: '#d7e360'
+  }
 });
 
 const bpmDiff = 10;
@@ -158,15 +177,43 @@ class RandomScaleGenerator extends React.Component {
       scale, bpm, nextScale, reverseNotes, onlyRelativeMinor
     } = this.state;
     const notes = this.getNotes(scale);
+    const headline = onlyRelativeMinor ? 'Generating Relative Minor Scales' : 'Generating Random Scales';
     return (
       <div className={classes.container}>
-        <ScalesAndNotes
-          notes={notes}
-          scale={scale}
-          nextScale={nextScale}
-          onlyRelativeMinor={onlyRelativeMinor}
-          isNoteSelected={(note) => this.isNoteSelected(note)}
-        />
+        <div className={classes.scalesContainer}>
+          <Typography
+            align="center"
+            color="primary"
+            variant="h5"
+          >
+            {' '}
+            {headline}
+            {' '}
+          </Typography>
+          <div className={classes.scale}>
+            <p>
+              Current Scale:
+              {' '}
+              <span className={classes.currentScale}>{scale}</span>
+            </p>
+            <p className={classes.nextScale}>
+              Next Scale:
+              {' '}
+              <span>{nextScale}</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              {notes.map((note, index) => {
+                const uniqueKey = `${scale}_${index}`;
+                if (this.isNoteSelected(index)) {
+                  return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
+                }
+                return <span key={uniqueKey}>{note}</span>;
+              })}
+            </p>
+          </div>
+        </div>
         <hr />
         <div className={classes.settings}>
           <div className={classes.bpmContainer}>
