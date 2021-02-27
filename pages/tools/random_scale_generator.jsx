@@ -16,7 +16,7 @@ import { getScale, getNotesOfScale } from '../../src/lib/scales';
 const styles = (theme) => ({
   container: {
     maxWidth: MAX_CONTENT_WIDTH,
-    width: '50em',
+    width: '38em',
     margin: '6em auto',
     [theme.breakpoints.down('sm')]: {
       margin: '3em auto'
@@ -29,7 +29,7 @@ const styles = (theme) => ({
       fontSize: '1.5em'
     },
     '& span': {
-      padding: '0.30em'
+      padding: '0.25em'
     }
   },
   scale: {
@@ -51,7 +51,6 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    gap: '1em'
   },
   settings: {
     display: 'flex',
@@ -183,8 +182,6 @@ class RandomScaleGenerator extends React.Component {
           </div>
           <div className={classes.notes}>
             <p>
-              Notes:
-              {' '}
               {notes.map((note, index) => {
                 const uniqueKey = `${scale}_${index}`;
                 if (this.isNoteSelected(index)) {
@@ -215,6 +212,7 @@ class RandomScaleGenerator extends React.Component {
                 +
                 {bpmDiff}
               </Button>
+              <br />
               <Button
                 variant="contained"
                 color="primary"
