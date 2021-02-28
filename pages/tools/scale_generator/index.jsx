@@ -8,10 +8,17 @@ import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import LoopIcon from '@material-ui/icons/Loop';
+import StopIcon from '@material-ui/icons/Stop';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import withLayout from '../../src/lib/with-layout';
-import { MAX_CONTENT_WIDTH } from '../../components/constants';
-import { getScale, getNotesOfScale, getRelativeMinorScale } from '../../src/lib/scales';
+import withLayout from '../../../src/lib/with-layout';
+import { MAX_CONTENT_WIDTH } from '../../../components/constants';
+import {
+  getScale,
+  getNotesOfScale,
+  getRelativeMinorScale
+} from '../../../src/lib/scales';
 
 const styles = (theme) => ({
   container: {
@@ -69,17 +76,22 @@ const styles = (theme) => ({
   },
   selectedNote: {
     backgroundColor: '#d7e360'
+  },
+  startControls: {
+    display: 'flex',
+    justifyContent: 'space-around'
   }
 });
 
 const bpmDiff = 10;
 
-class RandomScaleGenerator extends React.Component {
+class ScaleGenerator extends React.Component {
   constructor(props) {
     super(props);
     const scale = getRelativeMinorScale();
     const nextScale = getRelativeMinorScale(scale);
     this.state = {
+      beatsRunning: false,
       scale,
       nextScale,
       beatCount: 0,
@@ -108,8 +120,40 @@ class RandomScaleGenerator extends React.Component {
     return notes;
   }
 
+  toggleBeatRunningStatus() {
+    const { beatsRunning } = this.state;
+    if (beatsRunning) {
+      this.stopBeats();
+    } else {
+      this.startBeats();
+    }
+  }
+
   stopBeats() {
     clearInterval(this.intervalID);
+    this.setState({
+      beatsRunning: false
+    });
+  }
+
+  reset() {
+    this.stopBeats();
+    const { onlyRelativeMinor } = this.state;
+    let scale;
+    let nextScale;
+    if (onlyRelativeMinor) {
+      scale = getRelativeMinorScale();
+      nextScale = getRelativeMinorScale(scale);
+    } else {
+      scale = getScale();
+      nextScale = getScale();
+    }
+    this.setState({
+      scale,
+      nextScale,
+      beatsRunning: false,
+      beatCount: 0
+    });
   }
 
   startBeats() {
@@ -117,6 +161,9 @@ class RandomScaleGenerator extends React.Component {
       () => this.tick(),
       this.noteRefreshTime()
     );
+    this.setState({
+      beatsRunning: true
+    });
   }
 
   tick() {
@@ -178,7 +225,7 @@ class RandomScaleGenerator extends React.Component {
   render() {
     const { classes } = this.props;
     const {
-      scale, bpm, nextScale, reverseNotes, onlyRelativeMinor
+      scale, bpm, nextScale, reverseNotes, onlyRelativeMinor, beatsRunning
     } = this.state;
     const notes = this.getNotes(scale);
     const headline = onlyRelativeMinor ? 'Generating Relative Minor Scales' : 'Generating Random Scales';
@@ -187,8 +234,7 @@ class RandomScaleGenerator extends React.Component {
         <div className={classes.scalesContainer}>
           <Typography
             align="center"
-            color="primary"
-            variant="h5"
+            variant="subtitle1"
           >
             {' '}
             {headline}
@@ -206,16 +252,32 @@ class RandomScaleGenerator extends React.Component {
               <span>{nextScale}</span>
             </p>
           </div>
-          <div>
-            <p>
-              {notes.map((note, index) => {
-                const uniqueKey = `${scale}_${index}`;
-                if (this.isNoteSelected(index)) {
-                  return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
-                }
-                return <span key={uniqueKey}>{note}</span>;
-              })}
-            </p>
+          <p>
+            {notes.map((note, index) => {
+              const uniqueKey = `${scale}_${index}`;
+              if (this.isNoteSelected(index)) {
+                return <span key={uniqueKey} className={classes.selectedNote}>{note}</span>;
+              }
+              return <span key={uniqueKey}>{note}</span>;
+            })}
+          </p>
+          <div className={classes.startControls}>
+            <Button
+              variant="contained"
+              color={beatsRunning ? 'default' : 'primary'}
+              onClick={() => this.toggleBeatRunningStatus()}
+              startIcon={beatsRunning ? <StopIcon /> : <PlayCircleFilledWhiteIcon />}
+            >
+              {beatsRunning ? 'Pause' : 'Start'}
+            </Button>
+            <Button
+              variant="contained"
+              color="default"
+              onClick={() => this.reset()}
+              startIcon={<LoopIcon />}
+            >
+              reset
+            </Button>
           </div>
         </div>
         <hr />
@@ -287,8 +349,8 @@ class RandomScaleGenerator extends React.Component {
   }
 }
 
-RandomScaleGenerator.propTypes = {
+ScaleGenerator.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withLayout(withStyles(styles)(RandomScaleGenerator), 'Random Scale Generator');
+export default withLayout(withStyles(styles)(ScaleGenerator), 'Scale Generator');

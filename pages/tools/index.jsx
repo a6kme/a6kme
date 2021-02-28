@@ -51,7 +51,7 @@ const Tools = (props) => {
     <ul className={classes.tools_container}>
       <Typography align="center" variant="body1">Tools</Typography>
       <li className={classes.tool}>
-        <Link href="/tools/random_scale_generator">
+        <Link href="/tools/scale_generator">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
             <Typography align="left" variant="h5">
