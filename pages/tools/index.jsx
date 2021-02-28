@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Typography,
   withStyles
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -16,33 +17,51 @@ const styles = (theme) => ({
     },
     padding: '0 2em',
     listStyle: 'none',
-  },
-  tool: {
-    '& a': {
-      display: 'flex'
-    },
-    '& img': {
-      width: '2.5em',
-      height: '2.5em',
-      margin: '0.5em'
+    '&>li': {
+      padding: '1em'
     },
     '& p': {
-      fontSize: '1rem'
+      margin: '1em 0'
     }
-  }
+  },
+  tool: {
+    borderTop: '1px solid #f0edea',
+    padding: '1em 0',
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
+      '& h5': {
+        marginBottom: '1em'
+      },
+      '& p': {
+        color: '#666'
+      }
+    },
+    '& img': {
+      width: '5em',
+      height: '5em',
+      margin: '0 1em'
+    }
+  },
 });
 
 const Tools = (props) => {
   const { classes } = props;
   return (
     <ul className={classes.tools_container}>
-      <p>Tools</p>
+      <Typography align="center" variant="body1">Tools</Typography>
       <li className={classes.tool}>
-        <Link href="/tools/random_scale_generator">
+        <Link href="/tools/scale_generator">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
-            <img src="/tools/music.jpg" alt="music scale" />
-            <p>Generate random scale with BPM</p>
+            <Typography align="left" variant="h5">
+              Scales and Notes generator
+            </Typography>
+            <Typography align="left" variant="body1">
+              Generate a sequence of scales and notes of the scale. The sequence of scales can be
+              either random or configured for various rules. Beats Per Minute can be modified
+              using built in metronome.
+            </Typography>
           </a>
         </Link>
       </li>

@@ -108,8 +108,8 @@ const Index = (props) => {
       </Typography>
       <div className={classes.links_container}>
         <a
-          key="random_scale_generator"
-          href="/tools/random_scale_generator"
+          key="scale_generator"
+          href="/tools/scale_generator"
           rel="noopener noreferrer"
         >
           <img src="/tools/music.jpg" alt="music scale" />
