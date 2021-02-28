@@ -90,20 +90,13 @@ class RandomScaleGenerator extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setBpmInterval();
-  }
-
   componentWillUnmount() {
     clearInterval(this.intervalID);
   }
 
   setBpmInterval() {
-    clearInterval(this.intervalID);
-    this.intervalID = setInterval(
-      () => this.tick(),
-      this.noteRefreshTime()
-    );
+    this.stopBeats();
+    this.startBeats();
   }
 
   getNotes(scale) {
@@ -113,6 +106,17 @@ class RandomScaleGenerator extends React.Component {
       notes = notes.concat(notes.slice().reverse());
     }
     return notes;
+  }
+
+  stopBeats() {
+    clearInterval(this.intervalID);
+  }
+
+  startBeats() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      this.noteRefreshTime()
+    );
   }
 
   tick() {
