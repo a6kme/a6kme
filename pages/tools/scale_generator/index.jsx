@@ -57,6 +57,7 @@ const styles = (theme) => ({
     justifyContent: 'center'
   },
   scalesContainer: {
+    marginBottom: '1.5em',
     '& p': {
       fontSize: '1.5em'
     },
