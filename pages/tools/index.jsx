@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Divider,
   Typography,
   withStyles
 } from '@material-ui/core';
@@ -20,6 +19,9 @@ const styles = (theme) => ({
     listStyle: 'none',
     '&>li': {
       padding: '1em'
+    },
+    '& p': {
+      margin: '1em 0'
     }
   },
   tool: {
@@ -47,7 +49,7 @@ const Tools = (props) => {
   const { classes } = props;
   return (
     <ul className={classes.tools_container}>
-      <Typography align="center" variant="h5">Tools</Typography>
+      <Typography align="center" variant="body1">Tools</Typography>
       <li className={classes.tool}>
         <Link href="/tools/random_scale_generator">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
