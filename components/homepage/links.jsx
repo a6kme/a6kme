@@ -31,6 +31,11 @@ export default () => {
       alt: 'GoodReads',
       img: '/icons/goodreads.svg',
       href: 'https://www.goodreads.com/a6kme'
+    },
+    {
+      alt: 'Youtube',
+      img: '/icons/youtube.png',
+      href: 'https://www.youtube.com/user/abhiitd/videos'
     }
   ];
   const linksList = [];
