@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: a6kme/node-aws-cli:v3
+      - image: a6kme/node-aws-cli:v4
     branches:
       only: master
     steps:
