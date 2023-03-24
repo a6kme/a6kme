@@ -5,7 +5,7 @@ jobs:
       - image: a6kme/node-aws-cli:v2
     branches:
       only:
-        - master
+        - "master"
     steps:
       - checkout
       - run: npm install
