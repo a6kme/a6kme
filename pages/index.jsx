@@ -93,7 +93,7 @@ const Index = (props) => {
         P.S: If you don&apos;t have an email client installed on your device,
         you can email me at
         {' '}
-        <mark>a@a6k.me</mark>
+        <mark>abhishek@a6k.me</mark>
       </Typography>
       <hr />
       <Typography gutterBottom align="center" variant="subtitle1">
