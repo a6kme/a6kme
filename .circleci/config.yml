@@ -2,10 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: a6kme/node-aws-cli:v2
+      - image: a6kme/node-aws-cli:v3
     branches:
-      only:
-        - master
+      only: master
     steps:
       - checkout
       - run: npm install
