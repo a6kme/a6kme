@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/a6kme/a6kme",
-  "author": "Abhishek <abhishek@credifiable.com>",
+  "author": "Abhishek <abhishek@a6k.me>",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "latest",
@@ -13,9 +13,6 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest"
-  },
-  "engines" : {
-    "node" : ">=12.0.0 <13.0.0"
   },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next",

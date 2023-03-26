@@ -18,11 +18,6 @@ export default () => {
       href: 'https://github.com/a6kme'
     },
     {
-      alt: 'Medium',
-      img: '/icons/medium.svg',
-      href: 'https://medium.com/@a6kme'
-    },
-    {
       alt: 'LinkedIn',
       img: '/icons/linkedin.svg',
       href: 'https://www.linkedin.com/in/abhishek-kumar-a9b66418/'
