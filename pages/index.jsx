@@ -86,7 +86,7 @@ const Index = (props) => {
         .
       </Typography>
       {/* eslint-disable-next-line no-undef */}
-      <Button variant="contained" onClick={() => { window.location.href = 'mailto:a@a6k.me?subject=Hi from a6k.me!'; }}>
+      <Button variant="contained" onClick={() => { window.location.href = 'mailto:abhishek@a6k.me?subject=Hi from a6k.me!'; }}>
         Say Hi
       </Button>
       <Typography gutterBottom align="center" variant="subtitle1">
