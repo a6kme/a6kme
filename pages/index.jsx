@@ -97,14 +97,14 @@ const Index = (props) => {
       </Typography>
       <hr />
       <Typography gutterBottom align="center" variant="subtitle1">
-        My other hangouts in the network
+        I also hangout at
       </Typography>
       <div className={classes.links_container}>
         <ExternalLinksAndImages />
       </div>
       <hr />
       <Typography gutterBottom align="center" variant="subtitle1">
-        Tools
+        Some tools that I created for myself
       </Typography>
       <div className={classes.links_container}>
         <a

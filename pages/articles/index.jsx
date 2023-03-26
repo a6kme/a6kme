@@ -51,6 +51,21 @@ const Articles = (props) => {
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
       <li className={classes.articles}>
+        <a href="/articles/dawn-of-a-new-age-of-computer-programming">
+          <span>March 26th, 2023</span>
+          <h5>
+            Dawn of a new age of computer programming
+          </h5>
+          <p>
+            With the advant of Generative Pre-trained Transformer (GPT) and Large
+            Langauge Model (LLM), we have a powerful tool at our disposal as Software
+            Engineers. I am taking a use case of Downloading password protected
+            attachments from Gmail and demostrating how we can leverage this tool
+            and save time and become productive.
+          </p>
+        </a>
+      </li>
+      <li className={classes.articles}>
         <a href="/articles/zero-downtime-deployment-using-aws-alb-on-kubernetes">
           <span>February 24th, 2020</span>
           <h5>
