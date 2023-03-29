@@ -46,7 +46,7 @@ However, if approach 2 fails, you will have to fall back to Approach 3 [ I am no
 Lets look at how we will be approaching such use cases in future
 
 ### Approach 4 (The New Age)
-1. Open GPT-4 and start asing it what do you need in a declarative way. (The approach 3 that I mentioned above is something what we call an "Imperative way", where we do things step by step.) I used below prompt to get what I want. We can improve the results by providing better prompt by "Prompt Engineering". (Prompt Engineering is a discipline in AI which helps generate better prompts so that GPTs can give better results.)
+1. Open GPT-4 and start asking it what do you need in a declarative way. (The approach 3 that I mentioned above is something what we call an "Imperative way", where we do things step by step.) I used below prompt to get what I want. We can improve the results by providing better prompt by "Prompt Engineering". (Prompt Engineering is a discipline in AI which helps generate better prompts so that GPTs can give better results.)
 
 ```text
 I have some emails in my gmail inbox which I can query
