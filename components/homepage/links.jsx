@@ -31,6 +31,11 @@ export default () => {
       alt: 'Youtube',
       img: '/icons/youtube.png',
       href: 'https://www.youtube.com/user/abhiitd/videos'
+    },
+    {
+      alt: 'SoundCloud',
+      img: '/icons/soundcloud.png',
+      href: 'https://soundcloud.com/you/tracks'
     }
   ];
   const linksList = [];
