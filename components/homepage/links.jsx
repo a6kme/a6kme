@@ -35,7 +35,7 @@ export default () => {
     {
       alt: 'SoundCloud',
       img: '/icons/soundcloud.png',
-      href: 'https://soundcloud.com/you/tracks'
+      href: 'https://soundcloud.com/a6kme/tracks'
     }
   ];
   const linksList = [];
