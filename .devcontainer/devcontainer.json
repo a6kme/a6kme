@@ -10,10 +10,11 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "GitHub.copilot",
-                "GitHub.copilot-labs",
+                // "GitHub.copilot",
+                // "GitHub.copilot-labs",
                 "dsznajder.es7-react-js-snippets",
-                "donjayamanne.githistory"
+                "donjayamanne.githistory",
+                // "dbaeumer.vscode-eslint"
             ]
         }
     },

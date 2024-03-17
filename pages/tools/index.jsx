@@ -65,6 +65,19 @@ const Tools = (props) => {
           </a>
         </Link>
       </li>
+      <li className={classes.tool}>
+        <Link href="/tools/rhythm_generator/index.html">
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a>
+            <Typography align="left" variant="h5">
+              Rhythm Generator
+            </Typography>
+            <Typography align="left" variant="body1">
+              Generate Rhythm Patterns for Practice
+            </Typography>
+          </a>
+        </Link>
+      </li>
     </ul>
   );
 };

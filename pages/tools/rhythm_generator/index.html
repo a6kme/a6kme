@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Animation with Sound and Parametric Speed</title>
+  <style>
+    .circle-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle {
+      width: 100%;
+      /* Size of the circle */
+      height: 100%;
+      border-radius: 50%;
+      /* Makes the square a circle */
+      border: 2px solid black;
+      /* Circle border */
+      position: relative;
+      /* Needed for absolute positioning of children */
+    }
+
+    .moving-object {
+      width: 10px;
+      height: 10px;
+      background-color: blue;
+      position: absolute;
+      left: 100px;
+      top: 0px;
+    }
+
+    .milestone {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="circle-container">
+    <div class="circle">
+      <div class="moving-object"></div>
+    </div>
+  </div>
+  <div>
+    <button id="start" onclick="startAnimationForSubdivisions()">Start</button>
+    <button id="stop" onclick="stopAnimation()">Stop</button>
+  </div>
+  <div>
+    <input type="checkbox" id="subdivision_3" onchange="addSubdivision(3)" checked>
+    <label for="subdivision_3">3</label>
+
+    <input type="checkbox" id="subdivision_4" onchange="addSubdivision(4)" checked>
+    <label for="subdivision_4">4</label>
+
+    <input type="checkbox" id="subdivision_5" onchange="addSubdivision(5)" checked>
+    <label for="subdivision_5">5</label>
+
+    <input type="checkbox" id="subdivision_7" onchange="addSubdivision(7)" checked>
+    <label for="subdivision_7">7</label>
+  </div>
+  <div>
+    <button id="start" onclick="toggleMute()">Toggle Mute</button>
+    <button id="Increase Speed" onclick="changeSpeed(0.5)">Increase Speed</button>
+    <button id="Decrease Speed" onclick="changeSpeed(-0.5)">Decrease Speed</button>
+  </div>
+
+  <audio id="click-sound" src="Metronomes/Perc_Can_hi.wav" preload="auto"></audio>
+
+  <script>
+    const movingObject = document.querySelector('.moving-object');
+    const clickSound = document.getElementById('click-sound');
+    const circleContainer = document.querySelector('.circle-container');
+    const circleRadius = circleContainer.offsetWidth / 2 - 5; // Adjusting for the object's offset
+    let currentDegree = 0;
+    let isMute = false;
+    let animationFrameId = null;
+
+    let speedInDegreesPerFrame = 3; // Set your speed here
+
+
+    function approximatelyEqual(value_1, value_2, epsilon = speedInDegreesPerFrame / 10) {
+      return Math.abs(value_2 - value_1) < epsilon;
+    }
+
+    // We can input this one from user
+    const subdivisions = [3, 4, 5, 7];
+
+    let milestonesDegrees = [];
+    let countInCurrentSubdivision = 0;
+    let maxCountInCurrentSubdivision = 4;
+    let currentSubdivision = -1;
+
+
+    function placeMilestones() {
+      milestonesDegrees.forEach((degree) => {
+        const radians = degree * (Math.PI / 180);
+        const leftOffset = circleRadius + Math.sin(radians) * circleRadius;
+        const topOffset = circleRadius - Math.cos(radians) * circleRadius;
+        const milestone = document.createElement('div');
+        milestone.classList.add('milestone');
+        milestone.style.left = `${leftOffset}px`;
+        milestone.style.top = `${topOffset}px`;
+        circleContainer.appendChild(milestone);
+      });
+    }
+
+    function removeMilestones() {
+      const childrenToRemove = circleContainer.querySelectorAll('.' + 'milestone');
+      // Loop through the found child elements and remove each one
+      childrenToRemove.forEach((child) => {
+        child.remove();
+      });
+    }
+
+    function addSubdivision(subdivision) {
+      let isChecked = document.getElementById('subdivision_' + subdivision).checked;
+      if (isChecked && subdivisions.indexOf(subdivision) == -1) {
+        subdivisions.push(subdivision);
+        subdivisions.sort((a, b) => a - b);
+      } else if (!isChecked && subdivisions.indexOf(subdivision) != -1) {
+        subdivision_index = subdivisions.indexOf(subdivision);
+        subdivisions.splice(subdivision_index, 1);
+      }
+    }
+
+    function animate() {
+      animationFrameId = requestAnimationFrame(animate);
+
+      // Calculate object's position
+      const radians = currentDegree * (Math.PI / 180);
+      const leftOffset = circleRadius + Math.sin(radians) * circleRadius;
+      const topOffset = circleRadius - Math.cos(radians) * circleRadius;
+      movingObject.style.left = `${leftOffset}px`;
+      movingObject.style.top = `${topOffset}px`;
+
+
+      /* 
+        If the increase rate is such that, when the moving object crosses 0, currentDegree
+        modulo 360 may not give 0. So, we will consider crossing 0 whenever the moving object
+        is between -speedInDegreesPerFrame/2 and speedInDegreesPerFrame/2. Including one
+        limit and excluding other limit to avoid counting the event twice.
+      */
+      if ((360 - currentDegree) <= speedInDegreesPerFrame/2 || currentDegree < speedInDegreesPerFrame/2) {
+        // We are near to 0 and will cross 0 in next render cycle or we have just crossed 0
+
+        countInCurrentSubdivision += 1;
+        if (countInCurrentSubdivision > maxCountInCurrentSubdivision) {
+          cancelAnimationFrame(animationFrameId);
+          startAnimationForSubdivisions();
+        }
+        if (!isMute) {
+          clickSound.play();
+        }
+      };
+      currentDegree = (currentDegree + speedInDegreesPerFrame) % 360;
+    }
+
+
+
+    function divideCircleIntoSubdivisions() {
+      const angles = [];
+      for (let i = 0; i < currentSubdivision; i++) {
+        angles.push(i * (360 / currentSubdivision));
+      }
+      return angles;
+    }
+
+    function getNextSubdivision() {
+      if (currentSubdivision === -1) {
+        return subdivisions[0];
+      }
+      const currentIndex = subdivisions.indexOf(currentSubdivision);
+      const nextIndex = (currentIndex + 1) % subdivisions.length;
+      return subdivisions[nextIndex];
+    }
+
+    function toggleMute() {
+      isMute = !isMute;
+    }
+
+    function changeSpeed(value) {
+      speedInDegreesPerFrame += value;
+    }
+
+    function startAnimationForSubdivisions() {
+      removeMilestones();
+      countInCurrentSubdivision = 0;
+
+      currentSubdivision = getNextSubdivision()
+      milestonesDegrees = divideCircleIntoSubdivisions();
+
+      placeMilestones();
+      animate();
+    }
+
+    function stopAnimation() {
+      currentDegree = 0;
+      movingObject.style.left = `100px`;
+      movingObject.style.top = `0px`;
+      currentSubdivision = -1;
+      removeMilestones();
+      cancelAnimationFrame(animationFrameId);
+    }
+
+  </script>
+</body>
+
+</html>
