@@ -41,10 +41,10 @@ const styles = (theme) => ({
   },
   profile_pic: {
     boxShadow: '0 0 10px 2px rgba(173, 173, 173, 0.5)',
-    width: '40%',
+    width: '50%',
     display: 'block',
     margin: '1em auto 1em auto',
-    maxWidth: '300px',
+    maxWidth: '400px',
     borderRadius: '5px',
     [theme.breakpoints.down('sm')]: {
       width: '60%'
@@ -77,7 +77,7 @@ const Index = (props) => {
       <Typography gutterBottom align="center" variant="subtitle1">
         Welcome to my e-home in Cybernet. I can be recognized with below photo.
       </Typography>
-      <img alt="a6kme" src="/home/a6kme.jpg" className={classes.profile_pic} />
+      <img alt="a6kme" src="/home/dp.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
         Mostly I can be found in front of my computer. I love travelling, reading,
         babbling, and I am my experiences of them. I write sometimes, using
