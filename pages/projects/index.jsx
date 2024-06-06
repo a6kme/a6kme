@@ -46,7 +46,6 @@ const styles = (theme) => ({
   }
 });
 
-
 const Projects = (props) => {
   const { classes } = props;
   return (
@@ -93,8 +92,6 @@ const Projects = (props) => {
           Download Report
         </Button>
       </li>
-
-
     </ul>
   );
 };
