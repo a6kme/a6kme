@@ -78,7 +78,7 @@ const Index = (props) => {
       </Typography>
       <img alt="a6kme" src="/home/dp.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
-        I am currently doing my graduation in AI from Stanford School of Engineering. My current area of
+        I am currently doing my graduation in AI from Stanford School of Engineering under their <a target="_" href='https://online.stanford.edu/programs/artificial-intelligence-graduate-certificate'>SCPD program</a>. My current area of
         interest is in Deep Learning. Prior to that, I was working as CTO at PushOwl (Acquired by Brevo). I am
         seeking active collaboration in the field of Vision and NLP. Please feel free to reach out to me on my
         Email.

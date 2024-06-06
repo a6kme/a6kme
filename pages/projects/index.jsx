@@ -50,6 +50,7 @@ const Projects = (props) => {
   const { classes } = props;
   return (
     <ul className={classes.projects_container}>
+      <p>Recent Projects</p>
       <li className={classes.projects}>
         <span>June 6th, 2024</span>
         <h5>
