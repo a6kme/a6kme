@@ -8,11 +8,6 @@ export default () => {
       href: 'https://stackoverflow.com/users/520554/abhishek'
     },
     {
-      alt: 'Quora',
-      img: '/icons/quora.svg',
-      href: 'https://www.quora.com/profile/Abhishek-Kumar-38'
-    },
-    {
       alt: 'Github',
       img: '/icons/github.svg',
       href: 'https://github.com/a6kme'

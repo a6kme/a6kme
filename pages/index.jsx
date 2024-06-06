@@ -3,10 +3,10 @@ import {
   withStyles, Typography, Button
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import withLayout from '../src/lib/with-layout';
 import { BACKGROUND_COLOR, MAX_CONTENT_WIDTH } from '../components/constants';
 import ExternalLinksAndImages from '../components/homepage/links';
+import { downloadPdf } from '../src/lib/utils';
 
 const styles = (theme) => ({
   homepage_container: {
@@ -62,6 +62,8 @@ const styles = (theme) => ({
   }
 });
 
+
+
 const Index = (props) => {
   const { classes } = props;
   return (
@@ -76,9 +78,9 @@ const Index = (props) => {
       </Typography>
       <img alt="a6kme" src="/home/dp.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
-        I am currently doing my graduation in AI from Stanford School of Engineering. My current area of 
+        I am currently doing my graduation in AI from Stanford School of Engineering. My current area of
         interest is in Deep Learning. Prior to that, I was working as CTO at PushOwl (Acquired by Brevo). I am
-        seeking active collaboration in the field of Vision and NLP. Please feel free to reach out to me on my 
+        seeking active collaboration in the field of Vision and NLP. Please feel free to reach out to me on my
         Email.
       </Typography>
       {/* eslint-disable-next-line no-undef */}
@@ -99,6 +101,9 @@ const Index = (props) => {
         <ExternalLinksAndImages />
       </div>
       <hr />
+      <Button variant="contained" onClick={() => downloadPdf('/cv/Abhishek_Resume.pdf', 'Abhishek_Resume.pdf')}>
+        Download CV
+      </Button>
     </div>
   );
 };
