@@ -118,10 +118,10 @@ const Article = ({
       </p>
 
       {/* Hero Banner Section */}
-      <div className={classes.hero_banner}>
+      {/* <div className={classes.hero_banner}>
         <img src={img} alt={alt} />
         <p>{credit}</p>
-      </div>
+      </div> */}
 
       {/* Article content section, parsed from markdown */}
       {/* eslint-disable-next-line react/no-danger */}

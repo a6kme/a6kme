@@ -74,16 +74,12 @@ const Index = (props) => {
         {' '}
         <mark>Abhishek (A6k)</mark>
       </Typography>
-      <Typography gutterBottom align="center" variant="subtitle1">
-        Welcome to my e-home in Cybernet. I can be recognized with below photo.
-      </Typography>
       <img alt="a6kme" src="/home/dp.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
-        Mostly I can be found in front of my computer. I love travelling, reading,
-        babbling, and I am my experiences of them. I write sometimes, using
-        {' '}
-        <Link href="/articles">Articles Section</Link>
-        .
+        I am currently doing my graduation in AI from Stanford School of Engineering. My current area of 
+        interest is in Deep Learning. Prior to that, I was working as CTO at PushOwl (Acquired by Brevo). I am
+        seeking active collaboration in the field of Vision and NLP. Please feel free to reach out to me on my 
+        Email.
       </Typography>
       {/* eslint-disable-next-line no-undef */}
       <Button variant="contained" onClick={() => { window.location.href = 'mailto:abhishek@a6k.me?subject=Hi from a6k.me!'; }}>
@@ -97,24 +93,12 @@ const Index = (props) => {
       </Typography>
       <hr />
       <Typography gutterBottom align="center" variant="subtitle1">
-        I also hangout at
+        My other hangout spots
       </Typography>
       <div className={classes.links_container}>
         <ExternalLinksAndImages />
       </div>
       <hr />
-      <Typography gutterBottom align="center" variant="subtitle1">
-        Some tools that I created for myself
-      </Typography>
-      <div className={classes.links_container}>
-        <a
-          key="scale_generator"
-          href="/tools/scale_generator"
-          rel="noopener noreferrer"
-        >
-          <img src="/tools/music.jpg" alt="music scale" />
-        </a>
-      </div>
     </div>
   );
 };

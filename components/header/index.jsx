@@ -44,6 +44,7 @@ const styles = {
 const Header = (props) => {
   const { classes, router: { pathname } } = props;
   const articlesSelected = pathname.startsWith('/articles');
+  const projectSelected = pathname.startsWith('/projects');
   const toolsSelected = pathname.startsWith('/tools');
   const aboutSelected = pathname === '/';
   return (
@@ -64,6 +65,14 @@ const Header = (props) => {
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className={articlesSelected ? classes.header_nav_selected : ''}>
                   Articles
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/projects">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a className={projectSelected ? classes.header_nav_selected : ''}>
+                  Projects
                 </a>
               </Link>
             </li>
