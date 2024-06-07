@@ -13,17 +13,23 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link href="https://fonts.googleapis.com/css?family=Roboto|Inconsolata" rel="stylesheet" />
+          
           {/* Google Tag Manager */}
           {/* eslint-disable-next-line react/no-danger */}
-          <script dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-5SPC8SX');`
-          }}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVPZ3ZGQC2"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-GVPZ3ZGQC2');
+              `
+            }}
           />
           {/* End Google Tag Manager */}
+
+          {/* MathJax */}
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -41,19 +47,9 @@ export default class MyDocument extends Document {
             }}
           ></script>
           <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+          {/* End MathJax */}
         </Head>
         <body>
-          {/* Google Tag Manager (noscript) */}
-          <noscript>
-            <iframe
-              title="GTM-noscript"
-              src="https://www.googletagmanager.com/ns.html?id=GTM-5SPC8SX"
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
-          {/* End Google Tag Manager (noscript) */}
           <Main />
           <NextScript />
         </body>
