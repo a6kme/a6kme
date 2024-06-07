@@ -51,6 +51,19 @@ const Articles = (props) => {
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
       <li className={classes.articles}>
+        <a href="/articles/what-is-a-neural-network-and-how-does-it-learn">
+          <span>June 7th, 2024</span>
+          <h5>
+            What is a Neural Network and how does it Learn?
+          </h5>
+          <p>
+            I will try to break down the mechanism of training a neural network and 
+            explain some intuitions behind it by explaing loss objective and 
+            weight update mechanisms
+          </p>
+        </a>
+      </li>
+      <li className={classes.articles}>
         <a href="/articles/dawn-of-a-new-age-of-computer-programming">
           <span>March 26th, 2023</span>
           <h5>

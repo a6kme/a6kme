@@ -24,7 +24,22 @@ export default class MyDocument extends Document {
           }}
           />
           {/* End Google Tag Manager */}
-          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.MathJax = {
+                  tex: {
+                    inlineMath: [['$', '$']],
+                    displayMath: [['$$', '$$']],
+                    processEscapes: true
+                  },
+                  svg: {
+                    fontCache: 'global'
+                  }
+                };
+              `,
+            }}
+          ></script>
           <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         </Head>
         <body>
