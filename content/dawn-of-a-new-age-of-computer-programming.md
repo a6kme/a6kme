@@ -34,7 +34,7 @@ At some point while doing this, my pride as a software engineer would start hurt
 However, if approach 2 fails, you will have to fall back to Approach 3 [ I am not considering funny ideas like outsourcing this to some junior developer in your team or a freelancer 😉 ]
 
 ### Approach 3
-1. Search for "Gmail APIs" in Google and go to https://developers.google.com/gmail/api/guides
+1. Search for "Gmail APIs" in Google and go to [API Guide](https://developers.google.com/gmail/api/guides)
 2. Dig into documentation on how to connect to Gmail programatically
 3. Try writing some code while figuring out which scopes to ask while Authenticating your application
 4. Filter the emails using [messages.list API](https://developers.google.com/gmail/api/reference/rest/v1/users.messages/list) while trying to understand the structure of the response object received via API call
