@@ -78,7 +78,7 @@ Take current state of the art LLMs for instance. BERT learns by predicting maske
 
 I like to think it as below. Consider a function $y = \mathcal{D}(x)$. You have inputs $x$ and you have outputs $y$. But you have no idea on how $\mathcal{D}$ looks like. Let's take a well known problem of Sentiment Classification. Given an input statement $x_1$, "I loved the movie", the function $\mathcal{D}$ should output 1 (positive sentiment) and an input statement $x_2$, "What a waste of time", the function $\mathcal{D}$ should output 0 (negative sentiment). The problem is pretty easy to describe, but we have no idea how to formulate the function or write logic for it. Lets throw in some neural network. We don't need to bother about $\mathcal{D}$ now. We just need to define an objective. Take below formulation for example
 
-$$\mathcal{L}(x_i, y_i; \theta) = y_i\log{(\mathcal{D}(x_i; \theta))} + (1 - y_i)\log{(1 - \mathcal{D}(x_i; \theta))}$$
+$$\mathcal{L}(x_i, y_i; \theta) = - y_i\log{(\mathcal{D}(x_i; \theta))} - (1 - y_i)\log{(1 - \mathcal{D}(x_i; \theta))}$$
 
 Think about what happens when the model outputs the correct answer, i.e when true label is 1 and model outputs 1 *or* when true label is 0 and model outputs 0. [ Hint: $\log(1) = 0$]. So, we can see that we have very smartly formulated an objective and need not worry at all about the function that we had to learn. We can learn any $\mathcal{D}$ as long as we have enough compute and data and have come up with a clever way to formulate an objective.
 
