@@ -66,8 +66,14 @@ const Projects = (props) => {
             tuning, and fine-tuning on additional datasets. We have found that a combination of PALs,
             unsupervised SimCSE, and additional relational layers resulted in the largest improvements in system accuracy.</i>
         </p>
-        <Button variant="contained" onClick={() => downloadPdf('/projects/cs231_report.pdf', 'report.pdf')}>
+        <Button style={{ margin: '10px' }} variant="contained" onClick={() => downloadPdf('/projects/cs224_report.pdf', 'cs224_report.pdf')}>
           Download Report
+        </Button>
+        <Button style={{ margin: '10px' }} variant="contained" onClick={() => downloadPdf('/projects/cs224_poster.pdf', 'cs224_poster.pdf')}>
+          Download Poster
+        </Button>
+        <Button style={{ margin: '10px' }} variant="contained" onClick={() => window.location.href = 'https://youtu.be/CnU84SRuEsg'}>
+          Watch Presentation
         </Button>
       </li>
       <li className={classes.projects}>
@@ -89,8 +95,14 @@ const Projects = (props) => {
             Mixture Variational Autoencoders (GMVAE), and Generative Adversarial Networks (GAN), for
             generating synthetic chest X-ray images.</i>
         </p>
-        <Button variant="contained" onClick={() => downloadPdf('/projects/cs231_report.pdf', 'report.pdf')}>
+        <Button style={{ margin: '10px' }} variant="contained" onClick={() => downloadPdf('/projects/cs231_report.pdf', 'cs231_report.pdf')}>
           Download Report
+        </Button>
+        <Button style={{ margin: '10px' }} variant="contained" onClick={() => downloadPdf('/projects/cs231_poster.pdf', 'cs231_poster.pdf')}>
+          Download Poster
+        </Button>
+        <Button style={{ margin: '10px' }} variant="contained" onClick={() => window.location.href = 'https://youtu.be/cKdiDw5Vsms'}>
+          Watch Presentation
         </Button>
       </li>
     </ul>
