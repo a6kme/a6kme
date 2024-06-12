@@ -51,6 +51,19 @@ const Articles = (props) => {
     <ul className={classes.articles_container}>
       <p>Recent Articles</p>
       <li className={classes.articles}>
+        <a href="/articles/what-is-attention-in-deep-learning">
+          <span>June 14th, 2024</span>
+          <h5>
+            What is Attention in Deep Learning?
+          </h5>
+          <p>
+          In this article, I will attempt at explaining the concept of Attention 
+          in Deep Learning. I will try to explain the intuition behind it and 
+          throw some light on different applications in NLP and Vision models.
+          </p>
+        </a>
+      </li>
+      <li className={classes.articles}>
         <a href="/articles/what-is-a-neural-network-and-how-does-it-learn">
           <span>June 7th, 2024</span>
           <h5>
