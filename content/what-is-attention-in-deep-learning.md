@@ -13,7 +13,8 @@ In this article, I will attempt to motivate the need of Attention in Deep Learni
 
 ### What is Attention?
 
-To get an intuition behind Attention, lets consider a task of Image Captioning. When we humans try to understand an image, we like to focus on different parts of the image as we try to understand it. However, earlier versions of the Computer Vision and Natural Language models didn't use this principle. The entire image would be encoded into a fixed size vector and that vector would then be used for downstream tasks, like Image Captioning. Something like below. 
+
+Attention in deep learning allows models to focus on important parts of input data, much like humans do. This mechanism enhances tasks such as image captioning and language translation by improving the encoding of relevant features. To get an intuition behind Attention, lets consider a task of Image Captioning. When we humans try to understand an image, we like to focus on different parts of the image as we try to understand it. However, earlier versions of the Computer Vision and Natural Language models didn't use this principle. The entire image would be encoded into a fixed size vector and that vector would then be used for downstream tasks, like Image Captioning. Something like below. 
 
 <div style="text-align:center;">
   <img src="/articles/attention/vision_1.png" style="width: 80%;">
@@ -88,4 +89,4 @@ We can see that the vision model is able to focus on different parts of the imag
 We can see how the word `it_` is focusing on `The_ animal_` and `tired_`. 
 
 ### Conclusion
-In this article, we went through the concept of Attention in Deep Learning. We saw how the concept of Attention has evolved over the years and how it has been widely adopted in various NLP and Vision models. We saw how Attention helps us focus on different parts of the data and extract relevant information from it. Personally for me, the biggest takeaway from the evolution of this simple concept is how the research community builds on top of each other's work and continue to push the boundaries of what is possible.
+Attention mechanisms have significantly advanced deep learning, allowing models to focus on important data aspects and enhancing performance across NLP and vision tasks. Personally for me, the biggest takeaway from the evolution of this simple concept is how the research community builds on top of each other's work and continue to push the boundaries of what is possible.
