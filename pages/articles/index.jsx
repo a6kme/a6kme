@@ -52,7 +52,7 @@ const Articles = (props) => {
       <p>Recent Articles</p>
       <li className={classes.articles}>
         <a href="/articles/what-is-attention-in-deep-learning">
-          <span>June 14th, 2024</span>
+          <span>June 19th, 2024</span>
           <h5>
             What is Attention in Deep Learning?
           </h5>
