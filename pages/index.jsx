@@ -78,8 +78,8 @@ const Index = (props) => {
       </Typography>
       <img alt="a6kme" src="/home/dp.jpg" className={classes.profile_pic} />
       <Typography gutterBottom align="center" variant="subtitle1">
-        I am currently doing my graduation in AI from Stanford School of Engineering under their <a target="_" href='https://online.stanford.edu/programs/artificial-intelligence-graduate-certificate'>SCPD program</a>. My current area of
-        interest is in Deep Learning. Prior to that, I was working as CTO at PushOwl (Acquired by Brevo). I am
+        I am currently the co-founder of <a target="_" href='https://dograh.com'>Dograh</a>, an open source voice AI company. My current area of
+        interest is in Deep Learning. I did my graduation in AI from Stanford School of Engineering under their <a target="_" href='https://online.stanford.edu/programs/artificial-intelligence-graduate-certificate'>SCPD program</a>. Prior to that, I was working as CTO at PushOwl (Acquired by Brevo). I am
         seeking active collaboration in the field of Vision and NLP. Please feel free to reach out to me on my
         Email.
       </Typography>

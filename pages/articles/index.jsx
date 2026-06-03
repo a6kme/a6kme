@@ -132,23 +132,6 @@ const Articles = (props) => {
           </p>
         </a>
       </li>
-      <li className={classes.articles}>
-        <a href="/articles/why-i-decided-to-host-my-own-blog">
-          <span>April 20, 2019</span>
-          <h5>
-            Why I decided to host my own blog instead of going for service
-            providers
-          </h5>
-          <p>
-            I would like to explain the rationale behind why I decided to host
-            my own blog using
-            {' '}
-            <code>markdown</code>
-            {' '}
-            files instead of going for a hosted provider like Medium or WordPress.
-          </p>
-        </a>
-      </li>
     </ul>
   );
 };
